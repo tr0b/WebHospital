@@ -1,12 +1,11 @@
 const express = require("express");
 const cors = require("cors");
-const flash = require("connect-flash");
 const path = require("path");
 const session = require("express-session");
 const passport = require("passport");
 const app = express();
 //Passport config
-require("./passport")(passport);
+require("../middleware/passport")(passport);
 
 // Server Settings
 app.set("port", process.env.PORT || 3000);
@@ -43,33 +42,20 @@ app.use(
 
 app.use(passport.initialize());
 app.use(passport.session());
-//Connect Flash
-app.use(flash());
-
-//Global Vars
-
-app.use((req, res, next) => {
-	res.locals.success_msg = req.flash("success_msg");
-	res.locals.error_msg = req.flash("error_msg");
-	res.locals.error_msg = req.flash("error");
-	next();
-});
 
 //* Routes*
-//Login Route
-app.use(process.env.API_BASE_PATH, require("./routes/user.route"));
-//Request Route
-app.use(process.env.API_BASE_PATH, require("./routes/request.route"));
 //Register Route
-app.use(process.env.API_BASE_PATH, require("./routes/register.route"));
+app.use(process.env.API_BASE_PATH, require("../routes/user.register.route"));
+//Login Route
+app.use(process.env.API_BASE_PATH, require("../routes/login.route"));
 
 // Default Route
-app.use("*", (req, res, next) => {
-	if (!req.originalUrl.includes(process.env.API_BASE_PATH))
-		res.sendFile(
-			path.join(__dirname, "..", "public", "index.html")
-		);
-	else next();
-});
+/* app.use("*", (req, res, next) => {
+ *         if (!req.originalUrl.includes(process.env.API_BASE_PATH))
+ *                 res.sendFile(
+ *                         path.join(__dirname, "..", "public", "index.html")
+ *                 );
+ *         else next();
+ * }); */
 
 module.exports = app;
