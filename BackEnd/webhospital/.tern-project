@@ -1,0 +1,13 @@
+{
+    "libs":[           
+                   "infer"    
+           ],
+       "plugins": {           
+          "node": {},         
+          "es_modules":true,
+           "requirejs": {     
+         "baseURL": "./",     
+        "paths": {}          
+        }
+      }                      
+  }
