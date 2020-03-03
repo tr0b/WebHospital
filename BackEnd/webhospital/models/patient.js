@@ -5,6 +5,7 @@ const { Schema } = mongoose;
 const PatientSchema = new Schema({
 	name: { type: String, required: true },
 	last_name: { type: String, required: true },
+	idCard: { type: Number, required: true },
 	bloodType: { type: String, required: true },
 	gender: { type: String, required: true },
 	isActive: { type: Boolean, required: true, default: true },
