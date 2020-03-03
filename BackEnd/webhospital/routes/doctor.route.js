@@ -41,12 +41,13 @@ router.patch("/doctor/:id", async (req, res) => {
 		allowedUpdates.includes(update)
 	);
 	if (!isValidOperation) {
-		return res.send.status(400).send({ error: "Invalid Updates!" });
+		return res.status(400).send({ error: "Invalid Updates!" });
 	}
 	try {
 		const doctor = await Doctor.findById(req.params.id);
 		updates.forEach(update => (doctor[update] = req.body[update]));
 		await doctor.save();
+		res.status(200).send(doctor)
 	} catch (e) {
 		res.status(400).send(e);
 		/* handle error */
