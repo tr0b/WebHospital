@@ -12,7 +12,7 @@ router.post("/doctor", async (req, res) => {
 		res.status(400).send(e);
 	}
 });
-router.get("/see", (req, res) => {
+router.get("/doctors", (req, res) => {
 	//See all Doctors
 	Doctor.find({})
 		.then(doctors => {
@@ -36,6 +36,7 @@ router.patch("/doctor/:id", async (req, res) => {
 		"specialty",
 		"address.canton"
 	];
+	//Check Validation
 	const isValidOperation = updates.every(update =>
 		allowedUpdates.includes(update)
 	);

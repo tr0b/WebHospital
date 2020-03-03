@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
-//User Schema
+//Patient Schema
 const PatientSchema = new Schema({
 	name: { type: String, required: true },
 	last_name: { type: String, required: true },
@@ -9,7 +9,7 @@ const PatientSchema = new Schema({
 	bloodType: { type: String, required: true },
 	gender: { type: String, required: true },
 	isActive: { type: Boolean, required: true, default: true },
-	birthDate:{type:Date, required:true},
+	birthDate:{type:Date, required:true, default:Date.now()},
 	address: {
 		canton: { type: mongoose.Schema.Types.ObjectId, ref: "Canton" }
 	}

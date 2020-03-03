@@ -12,7 +12,7 @@ router.post("/patient", async (req, res) => {
 		res.status(400).send(e);
 	}
 });
-router.get("/see", (req, res) => {
+router.get("/patients", (req, res) => {
 	//See all Patients
 	Patient.find({})
 		.then(patients => {
