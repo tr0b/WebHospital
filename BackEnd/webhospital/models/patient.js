@@ -3,13 +3,12 @@ const { Schema } = mongoose;
 
 //User Schema
 const PatientSchema = new Schema({
-	profile: {
-		name: { type: String, required: true },
-		last_name: { type: String, required: true },
-		isActive: { type: Boolean, required: true, default: true }
-	},
+	name: { type: String, required: true },
+	last_name: { type: String, required: true },
+	bloodType: { type: String, required: true },
+	gender: { type: String, required: true },
+	isActive: { type: Boolean, required: true, default: true },
 	address: {
-
 		canton: { type: mongoose.Schema.Types.ObjectId, ref: "Canton" }
 	}
 });
