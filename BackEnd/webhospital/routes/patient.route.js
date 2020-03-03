@@ -1,7 +1,7 @@
 const express = require("express");
 const Patient = require("../models/patient");
 const router = new express.Router();
-router.post("/register", async (req, res) => {
+router.post("/patient", async (req, res) => {
 	//Register A new Patient
 	const patient = new Patient(req.body);
 	try {
@@ -23,7 +23,7 @@ router.get("/see", (req, res) => {
 		});
 });
 
-router.patch("/patients/:id", async (req, res) => {
+router.patch("/patient/:id", async (req, res) => {
 	//Modify Patient Details
 	const updates = Object.keys(req.body);
 	const allowedUpdates = [
