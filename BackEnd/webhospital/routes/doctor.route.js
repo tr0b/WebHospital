@@ -51,3 +51,5 @@ router.patch("/doctor/:id", async (req, res) => {
 		/* handle error */
 	}
 });
+
+module.exports = router;
