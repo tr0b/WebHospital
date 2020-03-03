@@ -44,18 +44,24 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 //* Routes*
-//Register Route
+//User CRUD Route
 app.use(process.env.API_BASE_PATH, require("../routes/user.register.route"));
+//Doctor CRUD Route
+app.use(process.env.API_BASE_PATH, require("../routes/doctor.route"));
+//Patient CRUD Route
+app.use(process.env.API_BASE_PATH, require("../routes/patient.route"));
+//Appointment CRUD Route
+app.use(process.env.API_BASE_PATH, require("../routes/appointment.route"));
 //Login Route
 app.use(process.env.API_BASE_PATH, require("../routes/login.route"));
 
 // Default Route
-/* app.use("*", (req, res, next) => {
- *         if (!req.originalUrl.includes(process.env.API_BASE_PATH))
- *                 res.sendFile(
- *                         path.join(__dirname, "..", "public", "index.html")
- *                 );
- *         else next();
- * }); */
+app.use("*", (req, res, next) => {
+	if (!req.originalUrl.includes(process.env.API_BASE_PATH))
+		res.sendFile(
+			path.join(__dirname, "..", "public", "index.html")
+		);
+	else next();
+});
 
 module.exports = app;

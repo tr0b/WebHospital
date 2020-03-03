@@ -9,6 +9,7 @@ const PatientSchema = new Schema({
 	bloodType: { type: String, required: true },
 	gender: { type: String, required: true },
 	isActive: { type: Boolean, required: true, default: true },
+	birthDate:{type:Date, required:true},
 	address: {
 		canton: { type: mongoose.Schema.Types.ObjectId, ref: "Canton" }
 	}

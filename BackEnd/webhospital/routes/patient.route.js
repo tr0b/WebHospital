@@ -32,6 +32,7 @@ router.patch("/patient/:id", async (req, res) => {
 		"idCard",
 		"isActive",
 		"bloodType",
+		"birthDate",
 		"gender",
 		"address.canton"
 	];
