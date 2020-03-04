@@ -3,14 +3,14 @@ const { Schema } = mongoose;
 
 //Visit Schema
 const VisitSchema = new Schema({
-	date: { type: Date, required: true },
+	date: { type: Date, required: true, default: Date.now() },
 	patient: {
 		required: true,
-		type: Mongoose.Schema.Types.ObjectId
+		type: mongoose.Schema.Types.ObjectId
 	},
 	doctor: {
 		required: true,
-		type: Mongoose.Schema.Types.ObjectId
+		type: mongoose.Schema.Types.ObjectId
 	},
 	diagnosis: { type: String, required: true }
 });

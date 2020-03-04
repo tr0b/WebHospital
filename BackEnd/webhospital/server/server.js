@@ -52,6 +52,12 @@ app.use(process.env.API_BASE_PATH, require("../routes/doctor.route"));
 app.use(process.env.API_BASE_PATH, require("../routes/patient.route"));
 //Visit CRUD Route
 app.use(process.env.API_BASE_PATH, require("../routes/visit.route"));
+//Plant CRUD Route
+app.use(process.env.API_BASE_PATH, require("../routes/plant.route"));
+//History CRUD Route
+app.use(process.env.API_BASE_PATH, require("../routes/history.route"));
+//Medicine CRUD Route
+app.use(process.env.API_BASE_PATH, require("../routes/medicine.route"));
 //Login Route
 app.use(process.env.API_BASE_PATH, require("../routes/login.route"));
 

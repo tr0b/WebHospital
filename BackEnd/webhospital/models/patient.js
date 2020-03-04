@@ -14,10 +14,13 @@ const PatientSchema = new Schema({
 	address: {
 		canton: { type: mongoose.Schema.Types.ObjectId, ref: "Canton" }
 	},
-	contact: {
-		phone: { type: Array },
-		email: { type: Array }
-	}
+	phone: { type: Array },
+	email: { type: Array }
+});
+PatientSchema.virtual("visits", {
+	ref: "Visit",
+	localField: "_id",
+	foreignField: "patient"
 });
 PatientSchema.virtual("histories", {
 	ref: "History",

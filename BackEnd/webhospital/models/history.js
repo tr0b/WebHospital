@@ -3,13 +3,13 @@ const { Schema } = mongoose;
 
 //History Schema
 const HistorySchema = new Schema({
-	dateIn: { type: Date, required: true },
-	dateOut: { type: Date, required: true },
+	dateIn: { type: Date, required: true, default: Date.now() },
+	dateOut: { type: Date },
 	bedInfo: {
 		bedId: { type: Number },
-		plant: { type: Mongoose.Schema.Types.ObjectId }
+		plant: { type: mongoose.Schema.Types.ObjectId }
 	},
-	patient: { type: Mongoose.Schema.Types.ObjectId, required: true }
+	patient: { type: mongoose.Schema.Types.ObjectId, required: true }
 });
 //Export of the History Model
 const History = mongoose.model("History", HistorySchema);

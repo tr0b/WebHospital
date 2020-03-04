@@ -38,10 +38,7 @@ const UserSchema = new Schema({
 	address: {
 		canton: { type: mongoose.Schema.Types.ObjectId, ref: "Canton" }
 	},
-	contact: {
-		phone: { type: Array },
-		email: { type: Array }
-	},
+	phone: { type: Array },
 	tokens: [
 		{
 			token: {

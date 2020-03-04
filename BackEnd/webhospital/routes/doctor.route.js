@@ -34,7 +34,9 @@ router.patch("/doctor/:id", async (req, res) => {
 		"birthDate",
 		"gender",
 		"specialty",
-		"address.canton"
+		"address.canton",
+		"phone",
+		"email"
 	];
 	//Check Validation
 	const isValidOperation = updates.every(update =>
@@ -47,7 +49,7 @@ router.patch("/doctor/:id", async (req, res) => {
 		const doctor = await Doctor.findById(req.params.id);
 		updates.forEach(update => (doctor[update] = req.body[update]));
 		await doctor.save();
-		res.status(200).send(doctor)
+		res.status(200).send(doctor);
 	} catch (e) {
 		res.status(400).send(e);
 		/* handle error */

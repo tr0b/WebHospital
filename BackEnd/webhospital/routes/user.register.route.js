@@ -13,7 +13,7 @@ router.post("/register", async (req, res) => {
 		res.status(400).send(e);
 	}
 });
-router.get("/see", (req, res) => {
+router.get("/users", (req, res) => {
 	//See all Users
 	User.find({})
 		.then(users => {
@@ -33,7 +33,9 @@ router.patch("/users/:id", async (req, res) => {
 		"email",
 		"password",
 		"isActive",
-		"address.canton"
+		"address.canton",
+		"phone",
+		"email"
 	];
 	const isValidOperation = updates.every(update =>
 		allowedUpdates.includes(update)

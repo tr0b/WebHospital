@@ -13,10 +13,8 @@ const DoctorSchema = new Schema({
 	address: {
 		canton: { type: mongoose.Schema.Types.ObjectId, ref: "Canton" }
 	},
-	contact: {
-		phone: { type: Array },
-		email: { type: Array }
-	}
+	phone: { type: Array },
+	email: { type: Array }
 });
 //Export of the Country Model
 const Doctor = mongoose.model("Doctor", DoctorSchema);

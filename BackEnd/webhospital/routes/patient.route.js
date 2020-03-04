@@ -34,7 +34,9 @@ router.patch("/patient/:id", async (req, res) => {
 		"bloodType",
 		"birthDate",
 		"gender",
-		"address.canton"
+		"address.canton",
+		"phone",
+		"email"
 	];
 	const isValidOperation = updates.every(update =>
 		allowedUpdates.includes(update)
