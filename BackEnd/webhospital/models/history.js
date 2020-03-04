@@ -8,7 +8,8 @@ const HistorySchema = new Schema({
 	bedInfo: {
 		bedId: { type: Number },
 		plant: { type: Mongoose.Schema.Types.ObjectId }
-	}
+	},
+	patient: { type: Mongoose.Schema.Types.ObjectId, required: true }
 });
 //Export of the History Model
 const History = mongoose.model("History", HistorySchema);

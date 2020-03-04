@@ -19,6 +19,11 @@ const PatientSchema = new Schema({
 		email: { type: Array }
 	}
 });
+PatientSchema.virtual("histories", {
+	ref: "History",
+	localField: "_id",
+	foreignField: "patient"
+});
 //Export of the Country Model
 const Patient = mongoose.model("Patient", PatientSchema);
 module.exports = Patient;
