@@ -9,9 +9,14 @@ const PatientSchema = new Schema({
 	bloodType: { type: String, required: true },
 	gender: { type: String, required: true },
 	isActive: { type: Boolean, required: true, default: true },
-	birthDate:{type:Date, required:true, default:Date.now()},
+	birthDate: { type: Date, required: true, default: Date.now() },
+	maritalStatus: { type: String, required: true, default: "Single" },
 	address: {
 		canton: { type: mongoose.Schema.Types.ObjectId, ref: "Canton" }
+	},
+	contact: {
+		phone: { type: Array },
+		email: { type: Array }
 	}
 });
 //Export of the Country Model

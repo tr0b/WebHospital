@@ -12,6 +12,10 @@ const DoctorSchema = new Schema({
 	specialty: { type: String, required: true },
 	address: {
 		canton: { type: mongoose.Schema.Types.ObjectId, ref: "Canton" }
+	},
+	contact: {
+		phone: { type: Array },
+		email: { type: Array }
 	}
 });
 //Export of the Country Model
