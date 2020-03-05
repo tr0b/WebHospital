@@ -26,7 +26,13 @@ router.get("/visits", (req, res) => {
 router.patch("/visit/:id", async (req, res) => {
 	//Modify Visit Details
 	const updates = Object.keys(req.body);
-	const allowedUpdates = ["date", "patient", "doctor", "diagnosis"];
+	const allowedUpdates = [
+		"date",
+		"patient",
+		"doctor",
+		"description",
+		"plant"
+	];
 	const isValidOperation = updates.every(update =>
 		allowedUpdates.includes(update)
 	);
