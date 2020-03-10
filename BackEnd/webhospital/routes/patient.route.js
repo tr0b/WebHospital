@@ -54,7 +54,6 @@ router.patch("/patient/:id", async (req, res) => {
 		/* handle error */
 	}
 });
-
 module.exports = router;
 //WIP
 /* [>List All Requests of a certain Buyer as a Boss<]
