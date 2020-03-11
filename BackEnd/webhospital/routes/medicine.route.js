@@ -12,6 +12,11 @@ router.post("/medicine", async (req, res) => {
 		res.status(400).send(e);
 	}
 });
+//Show a given medicine
+router.get("/medicine/:id", async (req, res) => {
+	const medicine = await Medicine.findById(req.params.id);
+	res.status(200).send(medicine);
+});
 router.get("/medicines", (req, res) => {
 	//See all Medicines
 	Medicine.find({})

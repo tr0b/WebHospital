@@ -33,9 +33,8 @@ router.patch("/users/:id", async (req, res) => {
 		"email",
 		"password",
 		"isActive",
-		"address.canton",
-		"phone",
-		"email"
+		"address",
+		"phone"
 	];
 	const isValidOperation = updates.every(update =>
 		allowedUpdates.includes(update)

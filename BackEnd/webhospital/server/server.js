@@ -44,21 +44,23 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 //* Routes*
-//User CRUD Route
+//User CRUD
 app.use(process.env.API_BASE_PATH, require("../routes/user.register.route"));
-//Doctor CRUD Route
+//Doctor CRUD
 app.use(process.env.API_BASE_PATH, require("../routes/doctor.route"));
-//Patient CRUD Route
+//Patient CRUD
 app.use(process.env.API_BASE_PATH, require("../routes/patient.route"));
-//Visit CRUD Route
+//Visit CRUD
 app.use(process.env.API_BASE_PATH, require("../routes/visit.route"));
-//Plant CRUD Route
+//Plant CRUD
 app.use(process.env.API_BASE_PATH, require("../routes/plant.route"));
-//History CRUD Route
+//History CRUD
 app.use(process.env.API_BASE_PATH, require("../routes/history.route"));
-//Medicine CRUD Route
+//Medicine CRUD
 app.use(process.env.API_BASE_PATH, require("../routes/medicine.route"));
-//Login Route
+//Room CRUD
+app.use(process.env.API_BASE_PATH, require("../routes/room.route"));
+//Login
 app.use(process.env.API_BASE_PATH, require("../routes/login.route"));
 
 // Default Route

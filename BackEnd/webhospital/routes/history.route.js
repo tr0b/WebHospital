@@ -1,5 +1,6 @@
 const express = require("express");
 const History = require("../models/history");
+const Room = require("../models/room");
 const router = new express.Router();
 router.post("/history", async (req, res) => {
 	//Register A new History
@@ -40,8 +41,19 @@ router.patch("/history/:id", async (req, res) => {
 		res.status(200).send(history);
 	} catch (e) {
 		res.status(400).send(e);
+		console.log(e);
 		/* handle error */
 	}
 });
-
+//See all Histories in a given Room
+router.get("/histories/:id", async (req, res) => {
+	try {
+		const room = await Room.findById(req.params.id);
+		await room.populate("histories").execPopulate();
+		res.status(200).send(room.histories);
+	} catch (e) {
+		/* handle error */
+		res.status(400).send(e);
+	}
+});
 module.exports = router;

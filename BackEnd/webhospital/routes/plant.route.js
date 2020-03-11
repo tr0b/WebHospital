@@ -1,8 +1,8 @@
 const express = require("express");
 const Plant = require("../models/plant");
 const router = new express.Router();
+//Register A new Plant
 router.post("/plant", async (req, res) => {
-	//Register A new Plant
 	const plant = new Plant(req.body);
 	try {
 		await plant.save();
@@ -12,8 +12,8 @@ router.post("/plant", async (req, res) => {
 		res.status(400).send(e);
 	}
 });
+//See all Plants
 router.get("/plants", (req, res) => {
-	//See all Plants
 	Plant.find({})
 		.then(plants => {
 			res.status(200).send(plants);
@@ -23,8 +23,8 @@ router.get("/plants", (req, res) => {
 		});
 });
 
+//Modify Plant Details
 router.patch("/plant/:id", async (req, res) => {
-	//Modify Plant Details
 	const updates = Object.keys(req.body);
 	const allowedUpdates = ["name"];
 	const isValidOperation = updates.every(update =>

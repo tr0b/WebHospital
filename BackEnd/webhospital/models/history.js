@@ -7,8 +7,7 @@ const HistorySchema = new Schema({
 	dateOut: { type: Date },
 	bedInfo: {
 		bedId: { type: Number },
-		plant: { type: mongoose.Schema.Types.ObjectId },
-		room: { type: String }
+		room: { type: mongoose.Schema.Types.ObjectId }
 	},
 	patient: { type: mongoose.Schema.Types.ObjectId, required: true }
 });
