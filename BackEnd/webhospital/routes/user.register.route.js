@@ -52,4 +52,14 @@ router.patch("/users/:id", async (req, res) => {
 	}
 });
 
+router.get("/users/:id", async (req, res) => {
+	try {
+		const user = await User.findById(req.params.id);
+		res.status(200).send(user);
+	} catch (e) {
+		/* handle error */
+		res.status(400).send(e);
+	}
+});
+
 module.exports = router;
