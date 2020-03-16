@@ -52,6 +52,7 @@ router.patch("/users/:id", async (req, res) => {
 	}
 });
 
+//See a specified user profile by its _id
 router.get("/users/:id", async (req, res) => {
 	try {
 		const user = await User.findById(req.params.id);
@@ -61,5 +62,4 @@ router.get("/users/:id", async (req, res) => {
 		res.status(400).send(e);
 	}
 });
-
 module.exports = router;
