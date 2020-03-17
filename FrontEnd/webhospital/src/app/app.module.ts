@@ -22,8 +22,11 @@ import { DoctorEditComponent } from "./doctors/doctors-list/doctor-edit/doctor-e
 import { PatientEditComponent } from "./patients/patients-list/patient-edit/patient-edit.component";
 import { VisitEditComponent } from "./visits/visits-list/visit-edit/visit-edit.component";
 import { HistoryEditComponent } from "./histories/histories-list/history-edit/history-edit.component";
+import { HttpClientModule } from "@angular/common/http";
 import { Routes } from "@angular/router";
-import { LogoComponent } from './logo/logo.component';
+import { LogoComponent } from "./logo/logo.component";
+import { FormsModule } from "@angular/forms";
+import { PatientCreateComponent } from "./patients/patient-create/patient-create.component";
 const routes: Routes = [];
 @NgModule({
   declarations: [
@@ -47,9 +50,10 @@ const routes: Routes = [];
     VisitEditComponent,
     HistoryEditComponent,
     PatientDetailComponent,
-    LogoComponent
+    LogoComponent,
+    PatientCreateComponent
   ],
-  imports: [BrowserModule, AppRoutingModule],
+  imports: [BrowserModule, FormsModule, AppRoutingModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent]
 })
