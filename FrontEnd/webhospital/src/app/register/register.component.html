@@ -3,11 +3,23 @@
     <form #authForm="ngForm">
       <div class="form-group">
         <label for="email">First Name</label>
-        <input type="email" id="email" class="form-control" />
+        <input
+          type="email"
+          id="email"
+          class="form-control"
+          ngModel
+          name="email"
+        />
         <!-- </div>
          - <div class="form-group"> -->
         <label for="surname">Last Name</label>
-        <input type="surname" id="surname" class="form-control" />
+        <input
+          type="surname"
+          id="surname"
+          class="form-control"
+          ngModel
+          name="last_name"
+        />
         <label for="email">Email</label>
         <input
           type="email"
