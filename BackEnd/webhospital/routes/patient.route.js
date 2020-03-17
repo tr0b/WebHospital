@@ -17,7 +17,6 @@ router.get("/patients", (req, res) => {
 	Patient.find({})
 		.then(patients => {
 			res.status(200).json(patients);
-			console.log("Angular Reached the patients in Node");
 		})
 		.catch(e => {
 			res.status(400).json(e);
