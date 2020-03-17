@@ -12,14 +12,13 @@ export class PatientCreateComponent implements OnInit {
   constructor(public patientsService: PatientsService) {}
 
   onAddPatient(form: NgForm) {
-    console.log(form.value);
     if (form.invalid) {
       return;
     }
     const patient: Patient = {
       name: form.value.name,
       last_name: form.value.last_name,
-      birthDate: form.value.birth_date,
+      birthDate: form.value.birthDate,
       idCard: form.value.idCard,
       bloodType: form.value.bloodType,
       gender: form.value.gender,

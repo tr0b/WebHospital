@@ -4,44 +4,100 @@
     <form (submit)="onAddPatient(postForm)" #postForm="ngForm">
       <label>First Name</label>
       <input
+        id="name"
+        ngModel
+        #name="ngModel"
         name="name"
         type="text"
-        id="name"
         class="form-control"
         required
-        value="hola"
       />
       <!-- </div>
          - <div class="form-group"> -->
       <label>Last Name</label>
-      <input type="last_name" id="last_name" class="form-control" required />
+      <input
+        type="text"
+        id="last_name"
+        ngModel
+        #last_name="ngModel"
+        name="last_name"
+        class="form-control"
+        required
+      />
       <label>Date of Birth</label>
-      <input type="birthDate" id="birthDate" class="form-control" required />
+      <input
+        type="text"
+        id="birthDate"
+        ngModel
+        #birthDate="ngModel"
+        class="form-control"
+        name="birthDate"
+        required
+      />
       <label>Id Card</label>
-      <input type="idCard" id="idCard" class="form-control" required />
+      <input
+        type="text"
+        id="idCard"
+        ngModel
+        #idCard="ngModel"
+        class="form-control"
+        name="idCard"
+        required
+      />
       <label>Blood Type</label>
-      <input type="bloodType" id="bloodType" class="form-control" required />
+      <input
+        type="text"
+        id="bloodType"
+        ngModel
+        #bloodType="ngModel"
+        class="form-control"
+        name="bloodType"
+        required
+      />
       <label>Gender</label>
-      <input type="gender" id="gender" class="form-control" required />
+      <input
+        type="text"
+        id="gender"
+        ngModel
+        #gender="ngModel"
+        class="form-control"
+        name="gender"
+        required
+      />
       <label>Marital Status</label>
       <input
-        type="maritalStatus"
+        type="text"
+        name="maritalStatus"
+        ngModel
+        #maritalStatus="ngModel"
         id="maritalStatus"
         class="form-control"
         required
       />
       <label for="phone">Phone</label>
-      <input type="phone" id="phone" class="form-control" required />
+      <input
+        type="text"
+        name="phone"
+        id="phone"
+        class="form-control"
+        #phone="ngModel"
+        ngModel
+        required
+      />
       <label for="email">Email</label>
-      <input type="email" id="email" class="form-control" required />
+      <input
+        type="text"
+        name="email"
+        id="email"
+        class="form-control"
+        #email="ngModel"
+        ngModel
+        required
+      />
       <!-- </div>
          - <div class="form-group"> -->
       <div>
-        <button
-          class="btn btn-primary"
-          type="submit"
-          [disabled]="!postForm.valid"
-        >
+        <button class="btn btn-primary" type="submit">
           Create Patient
         </button>
         |

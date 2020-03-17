@@ -16,7 +16,7 @@ export class PatientsService {
   //Obtain all Patients
   getPatients() {
     return this.httpClient
-      .get<{ patients: Patient[] }>(this.url + "patients")
+      .get<Patient[]>(this.url + "patients")
       .subscribe(patientData => {
         this.patients = patientData;
         this.patientsUpdated.next([...this.patients]);
@@ -25,9 +25,14 @@ export class PatientsService {
   getPatientUpdateListener() {
     return this.patientsUpdated.asObservable();
   }
+  //Add Patients
   addPatient(patient: Patient) {
-    console.log(patient);
-    /* this.patients.push(patient);
-     * this.patientsUpdated.next([...this.patients]); */
+    this.httpClient
+      .post(this.url + "patient", patient)
+      .subscribe(responseData => {
+        console.log(responseData.message);
+        this.patients.push(patient);
+        this.patientsUpdated.next([...this.patients]);
+      });
   }
 }
