@@ -18,7 +18,6 @@ export class PatientsService {
     return this.httpClient
       .get<{ patients: Patient[] }>(this.url + "patients")
       .subscribe(patientData => {
-        console.log(patientData);
         this.patients = patientData;
         this.patientsUpdated.next([...this.patients]);
       });
@@ -27,7 +26,8 @@ export class PatientsService {
     return this.patientsUpdated.asObservable();
   }
   addPatient(patient: Patient) {
-    this.patients.push(patient);
-    this.patientsUpdated.next([...this.patients]);
+    console.log(patient);
+    /* this.patients.push(patient);
+     * this.patientsUpdated.next([...this.patients]); */
   }
 }

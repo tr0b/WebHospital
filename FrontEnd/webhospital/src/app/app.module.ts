@@ -27,6 +27,8 @@ import { Routes } from "@angular/router";
 import { LogoComponent } from "./logo/logo.component";
 import { FormsModule } from "@angular/forms";
 import { PatientCreateComponent } from "./patients/patient-create/patient-create.component";
+import { UsersComponent } from './users/users.component';
+import { UserDetailComponent } from './users/user-detail/user-detail.component';
 const routes: Routes = [];
 @NgModule({
   declarations: [
@@ -51,7 +53,9 @@ const routes: Routes = [];
     HistoryEditComponent,
     PatientDetailComponent,
     LogoComponent,
-    PatientCreateComponent
+    PatientCreateComponent,
+    UsersComponent,
+    UserDetailComponent
   ],
   imports: [BrowserModule, FormsModule, AppRoutingModule, HttpClientModule],
   providers: [],
