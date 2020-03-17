@@ -23,6 +23,7 @@ import { PatientEditComponent } from "./patients/patients-list/patient-edit/pati
 import { VisitEditComponent } from "./visits/visits-list/visit-edit/visit-edit.component";
 import { HistoryEditComponent } from "./histories/histories-list/history-edit/history-edit.component";
 import { Routes } from "@angular/router";
+import { LogoComponent } from './logo/logo.component';
 const routes: Routes = [];
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ const routes: Routes = [];
     PatientEditComponent,
     VisitEditComponent,
     HistoryEditComponent,
-    PatientDetailComponent
+    PatientDetailComponent,
+    LogoComponent
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],
