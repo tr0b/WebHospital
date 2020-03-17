@@ -30,7 +30,7 @@ export class PatientsService {
     this.httpClient
       .post(this.url + "patient", patient)
       .subscribe(responseData => {
-        console.log(responseData.message);
+        console.log(responseData);
         this.patients.push(patient);
         this.patientsUpdated.next([...this.patients]);
       });
