@@ -1,1 +1,22 @@
-<p>Patient List</p>
+<div class="row">
+  <div class="col-xs-12">
+    Ç
+    <button class="btn btn-success">Add Patient</button>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12">
+    <a
+      href="#"
+      class="list-group-item clearfix"
+      *ngFor="let patient of patients"
+    >
+      <div class="pull-left">
+        <h4 class="list-group-item-heading">{{patient.idCard}}</h4>
+        <h4 class="list-group-item-heading">{{patient.name}}</h4>
+        <h4 class="list-group-item-heading">{{patient.last_name}}</h4>
+      </div>
+    </a>
+    <app-patient-item></app-patient-item>
+  </div>
+</div>

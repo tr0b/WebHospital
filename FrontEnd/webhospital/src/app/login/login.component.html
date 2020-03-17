@@ -1,67 +1,21 @@
-<!-- <div class="login-page" style="min-height: 512.391px;">
-   -   <div class="login-box">
-   -     <div class="login-logo">
-   -                 <img
-   -                 src="assets/dist/img/suplaivertical.png"
-   -                 alt="suplai-blanco2"
-   -                 height="60%"
-   -                 width="60%"
-   -           />
-   -   </div>
-   -   /.login-logo
-   -   <div class="card">
-   -     <div class="card-body login-card-body">
-   -       <p class="login-box-msg">Iniciar Sesión</p>
-   -
-   -       <form (ngSubmit)="onSubmit(loginForm)" #loginForm="ngForm" method="post">
-   -         <div class="input-group mb-3">
-   -           <input
-   -             type="email"
-   -             class="form-control"
-   -             placeholder="Correo"
-   -             name="email"
-   -             ngModel
-   -             required
-   -             #email="ngModel"
-   -           />
-   -           <div class="input-group-append">
-   -             <div class="input-group-text">
-   -               <span class="fas fa-envelope"></span>
-   -             </div>
-   -           </div>
-   -         </div>
-   -         <div class="input-group mb-3">
-   -           <input
-   -             type="password"
-   -             class="form-control"
-   -             name="password"
-   -             placeholder="Contraseña"
-   -             ngModel
-   -             required
-   -             #password="ngModel"
-   -           />
-   -           <div class="input-group-append">
-   -             <div class="input-group-text">
-   -               <span class="fas fa-lock"></span>
-   -             </div>
-   -           </div>
-   -         </div>
-   -         <div>
-   -           /.col
-   -           <div class="col">
-   -             <button type="submit" class="btn btn-primary btn-block">
-   -               Ingresar
-   -             </button>
-   -           </div>
-   -           /.col
-   -         </div>
-   -       </form>
-   -       <br />
-   -       <p class="mb-1">
-   -         <a href="#">Regresar al Inicio</a>
-   -       </p>
-   -     </div>
-   -     /.login-card-body
-   -   </div>
-   - </div>
-   - /.login-box -->
+<div class="row">
+  <app-header></app-header>
+
+  <div class="col-xs-12 col-md-6 col-md-offset-3">
+    <form>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" class="form-control" />
+        <!-- </div>
+         - <div class="form-group"> -->
+        <label for="password">Password</label>
+        <input type="password" id="password" class="form-control" />
+      </div>
+      <div>
+        <button class="btn btn-primary">Sign In</button>
+        |
+        <a href="#">Don't Have an Account yet? Click here to Sign up</a>
+      </div>
+    </form>
+  </div>
+</div>

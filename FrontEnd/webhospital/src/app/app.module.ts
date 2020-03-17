@@ -22,6 +22,8 @@ import { DoctorEditComponent } from "./doctors/doctors-list/doctor-edit/doctor-e
 import { PatientEditComponent } from "./patients/patients-list/patient-edit/patient-edit.component";
 import { VisitEditComponent } from "./visits/visits-list/visit-edit/visit-edit.component";
 import { HistoryEditComponent } from "./histories/histories-list/history-edit/history-edit.component";
+import { Routes } from "@angular/router";
+const routes: Routes = [];
 @NgModule({
   declarations: [
     AppComponent,
