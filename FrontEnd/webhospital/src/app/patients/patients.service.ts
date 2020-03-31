@@ -2,6 +2,7 @@ import { Injectable } from "@angular/core";
 import { Subject } from "rxjs";
 import { Patient } from "../models/patient.model";
 import { HttpClient } from "@angular/common/http";
+import { ToastrService } from "ngx-toastr";
 @Injectable({ providedIn: "root" })
 export class PatientsService {
   //Patient List
@@ -9,7 +10,7 @@ export class PatientsService {
   //Updated Patient List after POST
   private patientsUpdated = new Subject<Patient[]>();
   //Constructor with HttpClient
-  constructor(private httpClient: HttpClient) {}
+  constructor(private httpClient: HttpClient, private toastr: ToastrService) {}
   //URL string
   private url: String = "http://localhost:3000/api/v1/";
 
@@ -34,5 +35,6 @@ export class PatientsService {
         this.patients.push(patient);
         this.patientsUpdated.next([...this.patients]);
       });
+    this.toastr.success("¡Paciente Ingresado Exitosamente!", "¡Exito!");
   }
 }

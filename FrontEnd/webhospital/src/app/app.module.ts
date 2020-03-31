@@ -29,6 +29,8 @@ import { FormsModule } from "@angular/forms";
 import { PatientCreateComponent } from "./patients/patient-create/patient-create.component";
 import { UsersComponent } from "./users/users.component";
 import { UserDetailComponent } from "./users/user-detail/user-detail.component";
+import { ToastrModule } from "ngx-toastr";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 @NgModule({
   declarations: [
     AppComponent,
@@ -56,7 +58,14 @@ import { UserDetailComponent } from "./users/user-detail/user-detail.component";
     UsersComponent,
     UserDetailComponent
   ],
-  imports: [BrowserModule, FormsModule, AppRoutingModule, HttpClientModule],
+  imports: [
+    BrowserModule,
+    FormsModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    HttpClientModule,
+    ToastrModule.forRoot()
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })
