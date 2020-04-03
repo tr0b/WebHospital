@@ -3,6 +3,7 @@ import { Subject } from "rxjs";
 import { Patient } from "../models/patient.model";
 import { HttpClient } from "@angular/common/http";
 import { ToastrService } from "ngx-toastr";
+
 @Injectable({ providedIn: "root" })
 export class PatientsService {
   //Patient List
@@ -34,7 +35,8 @@ export class PatientsService {
         console.log(responseData);
         this.patients.push(patient);
         this.patientsUpdated.next([...this.patients]);
+        this.toastr.success("¡Paciente Ingresado Exitosamente!", "¡Exito!");
+        console.log("La notificacion se disparo");
       });
-    this.toastr.success("¡Paciente Ingresado Exitosamente!", "¡Exito!");
   }
 }

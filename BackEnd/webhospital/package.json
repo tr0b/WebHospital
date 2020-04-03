@@ -19,6 +19,7 @@
 		"flash": "^1.1.0",
 		"jsonwebtoken": "^8.5.1",
 		"mongoose": "^5.9.7",
+		"node-pre-gyp": "^0.14.0",
 		"nodemon": "^2.0.2",
 		"passport-local": "^1.0.0",
 		"tern": "^0.24.3",
