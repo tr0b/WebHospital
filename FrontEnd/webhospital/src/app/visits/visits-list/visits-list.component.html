@@ -4,7 +4,7 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1 class="m-0 text-dark">Visitas</h1>
+          <h1 class="m-0 text-dark">Visitas Paciente {{Foo Bar Baz}}</h1>
         </div>
       </div>
       <!-- /.row -->
@@ -40,7 +40,6 @@
                 <thead>
                   <tr>
                     <th scope="row">ID</th>
-                    <th scope="row">Paciente</th>
                     <th scope="row">Doctor</th>
                     <th scope="row">Fecha</th>
                   </tr>
@@ -51,9 +50,6 @@
                     [routerLink]="['/visit', visit._id]"
                   >
                     <td scope="col">{{ visit._id | slice: -5 }}</td>
-                    <td scope="col">
-                      {{ visit.patient._id}}
-                    </td>
                     <td scope="col">{{ visit.doctor._id}}</td>
                     <td scope="col">{{ visit.date}}</td>
                   </tr>
