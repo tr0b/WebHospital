@@ -15,9 +15,10 @@
   <section class="content">
     <div class="container-fluid">
       <div class="row">
-        <div class="col-12">
+        <div class="col-6">
           <div class="card">
             <div class="card-header">
+              <!-- Table-->
               <h3 class="card-title">Lista</h3>
 
               <div class="card-tools">
@@ -25,7 +26,7 @@
                   <button
                     type="button"
                     class="btn  btn-success"
-                    [routerLink]="['/agregarUsuario']"
+                    [routerLink]="['/addDoctor']"
                   >
                     <i class="fas fa-user-plus"></i>
                     Agregar
@@ -35,13 +36,13 @@
             </div>
             <!-- /.card-header -->
             <div class="card-body table-responsive p-0">
-              <table class="table table-head-fixed text-nowrap">
+              <table class="table table-stripped table-hover">
                 <thead>
                   <tr>
-                    <th>ID</th>
-                    <th>Name</th>
-                    <th>Last Name</th>
-                    <th>Specialty</th>
+                    <th scope="row">ID</th>
+                    <th scope="row">Name</th>
+                    <th scope="row">Last Name</th>
+                    <th scope="row">Specialty</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -49,10 +50,12 @@
                     *ngFor="let doctor of this.doctors"
                     [routerLink]="['/doctor', doctor._id]"
                   >
-                    <td>{{ doctor._id | slice: -5 }}</td>
-                    <td>{{ doctor.name + " " + doctor.last_name }}</td>
-                    <td>{{ doctor.birthDate}}</td>
-                    <td>{{ doctor.specialty}}</td>
+                    <td scope="col">{{ doctor._id | slice: -5 }}</td>
+                    <td scope="col">
+                      {{ doctor.name + " " + doctor.last_name }}
+                    </td>
+                    <td scope="col">{{ doctor.birthDate}}</td>
+                    <td scope="col">{{ doctor.specialty}}</td>
                   </tr>
                 </tbody>
               </table>
