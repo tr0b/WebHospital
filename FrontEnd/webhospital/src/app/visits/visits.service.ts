@@ -3,6 +3,7 @@ import { Subject } from "rxjs";
 import { Visit } from "../models/visit.model";
 import { HttpClient } from "@angular/common/http";
 import { ToastrService } from "ngx-toastr";
+import { environment } from "src/environments/environment";
 
 @Injectable({ providedIn: "root" })
 export class VisitsService {
@@ -12,39 +13,43 @@ export class VisitsService {
   private visitsUpdated = new Subject<Visit[]>();
   //Constructor with HttpClient
   constructor(private httpClient: HttpClient, private toastr: ToastrService) {}
-  //URL string
-  private url: String = "http://localhost:3000/api/v1/";
 
   //Obtain all Visits
   getVisits() {
     return this.httpClient
-      .get<Visit[]>(this.url + "visits")
+      .get<Visit[]>(environment.API_PATH + "visits")
       .subscribe(visitData => {
         this.visits = visitData;
         this.visitsUpdated.next([...this.visits]);
       });
+  }
+  //Obtain a Visit
+  getVisit(id: string) {
+    return this.httpClient.get(environment.API_PATH + "visit/" + id);
   }
   getVisitUpdateListener() {
     return this.visitsUpdated.asObservable();
   }
-
-  //Obtain all Visits of specific Patient
-  getPatientVisits() {
-    return this.httpClient
-      .get<Visit[]>(this.url + "visits/" + "")
-      .subscribe(visitData => {
-        this.visits = visitData;
-        this.visitsUpdated.next([...this.visits]);
-      });
-  }
   //Add Visits
   addVisit(visit: Visit) {
-    this.httpClient.post(this.url + "visit", visit).subscribe(responseData => {
-      console.log(responseData);
-      this.visits.push(visit);
-      this.visitsUpdated.next([...this.visits]);
-      this.toastr.success("¡Paciente Ingresado Exitosamente!", "¡Exito!");
-      console.log("La notificacion se disparo");
-    });
+    this.httpClient
+      .post(environment.API_PATH + "visit", visit)
+      .subscribe(responseData => {
+        console.log(responseData);
+        this.visits.push(visit);
+        this.visitsUpdated.next([...this.visits]);
+        this.toastr.success("¡Paciente Ingresado Exitosamente!", "¡Exito!");
+        console.log("La notificacion se disparo");
+      });
+  }
+  patchVisit(visit: any, id) {
+    console.log(visit);
+    this.httpClient
+      .patch(environment.API_PATH + "visit/" + id, visit)
+      .subscribe(responseData => {
+        console.log(responseData);
+        this.visitsUpdated.next([...this.visits]);
+        this.toastr.success("¡Paciente Actualizado Exitosamente!", "¡Exito!");
+      });
   }
 }

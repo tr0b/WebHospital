@@ -73,6 +73,20 @@
         />
       </div>
       <div class="form-group">
+        <label for="exampleFormControlSelect1">Status:</label>
+        <select
+          name="isActive"
+          class="form-control"
+          id="exampleFormControlSelect1"
+          ngModel
+          #isActive="ngModel"
+          value="{{this.doctor.isActive}}"
+        >
+          <option value="true">Active</option>
+          <option value="false">Inactive</option>
+        </select>
+      </div>
+      <div class="form-group">
         <label for="exampleFormControlSelect1">Gender:</label>
         <select
           name="gender"
@@ -87,6 +101,16 @@
         </select>
       </div>
       <div class="form-group">
+        <label for="exampleFormControlSelect1">Specialty:</label>
+        <input
+          id="exampleFormControlSelect1"
+          ngModel
+          #specialty="ngModel"
+          value="{{this.doctor.specialty}}"
+          name="specialty"
+        />
+      </div>
+      <div class="form-group">
         <label for="exampleFormControlSelect1">Email:</label>
         <input
           id="exampleFormControlSelect1"
@@ -97,7 +121,7 @@
         />
       </div>
       <div>
-        <button type="submit" class="btn  btn-success">
+        <button type="submit" class="btn  btn-success" [disabled]="!form.valid">
           <i class="nav-icon fas fa-user-edit"></i>
           Guardar Cambios
         </button>

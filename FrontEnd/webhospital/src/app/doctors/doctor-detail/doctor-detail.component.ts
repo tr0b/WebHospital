@@ -1,15 +1,69 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
+import { ActivatedRoute } from "@angular/router";
+import { DoctorsService } from "../doctors.service";
+import { Doctor } from "../../models/doctor.model";
+import { FormGroup, FormControl, Validators } from "@angular/forms";
+import { NgForm } from "@angular/forms";
+
+//ToastrService
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { ToastrService } from "ngx-toastr";
 
 @Component({
-  selector: 'app-doctor-detail',
-  templateUrl: './doctor-detail.component.html',
-  styleUrls: ['./doctor-detail.component.css']
+  selector: "app-doctor",
+  templateUrl: "./doctor-detail.component.html",
+  styleUrls: ["./doctor-detail.component.css"]
 })
 export class DoctorDetailComponent implements OnInit {
+  doctor: Doctor;
+  edit: boolean = false;
+  selectInfo: any[] = [];
+  selectDoctor: string;
+  id: string;
 
-  constructor() { }
-
-  ngOnInit() {
+  constructor(
+    private router: ActivatedRoute,
+    private doctorsService: DoctorsService,
+    private toastr: ToastrService
+  ) {
+    this.router.params.subscribe(params => {
+      this.id = params["id"];
+      this.getDoctor(this.id);
+    });
   }
 
+  ngOnInit() {}
+
+  getDoctor(id: string) {
+    this.doctorsService.getDoctor(id).subscribe((data: Doctor) => {
+      this.doctor = data;
+      console.log(this.doctor);
+    });
+  }
+
+  //Doctor gets updated with PATCH method
+  patchDoctor() {
+    this.edit = !this.edit;
+  }
+
+  onPatchDoctor(form: NgForm) {
+    if (form.invalid) {
+      return;
+    }
+
+    const freshdoctor: Doctor = {
+      idCard: form.value.idCard,
+      name: form.value.name,
+      last_name: form.value.last_name,
+      birthDate: form.value.birthDate,
+      isActive: form.value.isActive,
+      gender: form.value.gender,
+      specialty: form.value.specialty
+    };
+
+    console.log("Imprimiendo formulario...");
+    console.log(freshdoctor);
+    console.log("Formulario impreso");
+    this.doctorsService.patchDoctor(freshdoctor, this.id);
+  }
 }

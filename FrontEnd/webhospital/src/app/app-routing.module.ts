@@ -9,6 +9,7 @@ import { PatientCreateComponent } from "./patients/patient-create/patient-create
 import { DoctorCreateComponent } from "./doctors/doctors-create/doctors-create.component";
 import { VisitCreateComponent } from "./visits/visits-create/visits-create.component";
 import { PatientDetailComponent } from "./patients/patient-detail/patient-detail.component";
+import { DoctorDetailComponent } from "./doctors/doctor-detail/doctor-detail.component";
 import { LoginComponent } from "./login/login.component";
 import { RegisterComponent } from "./register/register.component";
 const routes: Routes = [
@@ -18,6 +19,7 @@ const routes: Routes = [
     component: PatientsComponent
   },
   { path: "patient/:id", component: PatientDetailComponent },
+  { path: "doctor/:id", component: DoctorDetailComponent },
   { path: "doctors", component: DoctorsComponent },
   { path: "visits", component: VisitsComponent },
   { path: "histories", component: HistoriesComponent },

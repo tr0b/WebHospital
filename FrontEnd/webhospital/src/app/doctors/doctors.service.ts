@@ -23,6 +23,10 @@ export class DoctorsService {
         this.doctorsUpdated.next([...this.doctors]);
       });
   }
+  //Obtain a Doctor
+  getDoctor(id: string) {
+    return this.httpClient.get(environment.API_PATH + "doctor/" + id);
+  }
   getDoctorUpdateListener() {
     return this.doctorsUpdated.asObservable();
   }
@@ -38,5 +42,14 @@ export class DoctorsService {
         console.log("La notificacion se disparo");
       });
   }
-  updateDoctor(body: any) {}
+  patchDoctor(doctor: any, id) {
+    console.log(doctor);
+    this.httpClient
+      .patch(environment.API_PATH + "doctor/" + id, doctor)
+      .subscribe(responseData => {
+        console.log(responseData);
+        this.doctorsUpdated.next([...this.doctors]);
+        this.toastr.success("¡Paciente Actualizado Exitosamente!", "¡Exito!");
+      });
+  }
 }

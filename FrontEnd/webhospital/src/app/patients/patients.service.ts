@@ -24,6 +24,7 @@ export class PatientsService {
       });
   }
 
+  //Obtain a Patient
   getPatient(id: string) {
     return this.httpClient.get(environment.API_PATH + "patient/" + id);
   }
