@@ -2,7 +2,7 @@
 <div class="row">
   <div class="col-xs-12 col-md-6 col-md-offset-3">
     <form (submit)="onAddPatient(postForm)" #postForm="ngForm">
-      <label>First Name</label>
+      <label>* First Name</label>
       <input
         id="name"
         ngModel
@@ -14,7 +14,7 @@
       />
       <!-- </div>
          - <div class="form-group"> -->
-      <label>Last Name</label>
+      <label>* Last Name</label>
       <input
         type="text"
         id="last_name"
@@ -24,7 +24,7 @@
         class="form-control"
         required
       />
-      <label>Date of Birth</label>
+      <label>* Date of Birth</label>
       <input
         type="text"
         id="birthDate"
@@ -34,7 +34,7 @@
         name="birthDate"
         required
       />
-      <label>Id Card</label>
+      <label>* Id Card</label>
       <input
         type="text"
         id="idCard"
@@ -44,7 +44,7 @@
         name="idCard"
         required
       />
-      <label>Blood Type</label>
+      <label>* Blood Type</label>
       <input
         type="text"
         id="bloodType"
@@ -54,7 +54,7 @@
         name="bloodType"
         required
       />
-      <label>Gender</label>
+      <label>* Gender</label>
       <input
         type="text"
         id="gender"
@@ -64,7 +64,7 @@
         name="gender"
         required
       />
-      <label>Marital Status</label>
+      <label>* Marital Status</label>
       <input
         type="text"
         name="maritalStatus"
@@ -82,7 +82,6 @@
         class="form-control"
         #phone="ngModel"
         ngModel
-        required
       />
       <label for="email">Email</label>
       <input
@@ -92,12 +91,18 @@
         class="form-control"
         #email="ngModel"
         ngModel
-        required
       />
       <!-- </div>
          - <div class="form-group"> -->
       <div>
         <button class="btn btn-primary" type="submit">
+          Create Patient
+        </button>
+        <button
+          class="btn btn-danger"
+          type="button"
+          [routerLink]="['/patients']"
+        >
           Create Patient
         </button>
         |

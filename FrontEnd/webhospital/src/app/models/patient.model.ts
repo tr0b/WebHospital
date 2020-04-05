@@ -7,6 +7,6 @@ export interface Patient {
   gender: String;
   isActive: Boolean;
   maritalStatus: String;
-  phone: Array<Number>;
-  email: Array<String>;
+  phone?: Array<Number>;
+  email?: Array<String>;
 }

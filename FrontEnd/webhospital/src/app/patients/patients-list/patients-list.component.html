@@ -1,21 +1,74 @@
-<div class="row">
-  <div class="col-xs-12">
-    <app-patient-create></app-patient-create>
-  </div>
-</div>
-<div class="row">
-  <div class="col-xs-12">
-    <a
-      href="#"
-      class="list-group-item clearfix"
-      *ngFor="let patient of patients"
-    >
-      <div class="pull-left">
-        <h4 class="list-group-item-heading">{{patient.idCard}}</h4>
-        <h4 class="list-group-item-heading">{{patient.name}}</h4>
-        <h4 class="list-group-item-heading">{{patient.last_name}}</h4>
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <div class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1 class="m-0 text-dark">Pacientes</h1>
+        </div>
       </div>
-    </a>
-    <app-patient-item></app-patient-item>
+      <!-- /.row -->
+    </div>
+    <!-- /.container-fluid -->
   </div>
+  <!-- /.content-header -->
+  <section class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-6">
+          <div class="card">
+            <div class="card-header">
+              <!-- Table-->
+              <h3 class="card-title">Lista</h3>
+
+              <div class="card-tools">
+                <div>
+                  <button
+                    type="button"
+                    class="btn  btn-success"
+                    [routerLink]="['/addPatient']"
+                  >
+                    <i class="fas fa-user-plus"></i>
+                    Nuevo Paciente
+                  </button>
+                </div>
+              </div>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body table-responsive p-0">
+              <table class="table table-stripped table-hover">
+                <thead>
+                  <tr>
+                    <th scope="row">ID Card</th>
+                    <th scope="row">Insurance Code</th>
+                    <th scope="row">Full Name</th>
+                    <th scope="row">Gender</th>
+                    <th scope="row">Birth Date</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr
+                    *ngFor="let patient of this.patients"
+                    [routerLink]="['/patient', patient._id]"
+                  >
+                    <td scope="col">{{ patient.idCard}}</td>
+                    <td scope="col">{{patient._id | slice:-10}}</td>
+                    <td scope="col">
+                      {{ patient.name + " " + patient.last_name }}
+                    </td>
+                    <td scope="col">
+                      {{patient.gender}}
+                    </td>
+                    <td>{{patient.birthDate | slice: 0:10}}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <!-- /.card-body -->
+          </div>
+          <!-- /.card -->
+        </div>
+      </div>
+    </div>
+  </section>
 </div>

@@ -55,26 +55,3 @@ router.patch("/patient/:id", async (req, res) => {
 	}
 });
 module.exports = router;
-//WIP
-/* [>List All Requests of a certain Buyer as a Boss<]
- * router.post("/buyer/request/list", ensureAuthenticated, async (req, res) => {
- *         const buyer = await User.findById(req.body.buyerID);
- *         console.log(req.body.buyerID);
- *         await buyer.populate("requests").execPopulate();
- *         console.log(buyer.requests);
- *         res.json(buyer.requests);
- * });
- * [> List All Requests as a Buyer <]
- * router.get("/request/list", ensureAuthenticated, async (req, res) => {
- *         const buyer = await User.findById(req.user._id);
- *         await buyer.populate("requests").execPopulate();
- *         console.log(buyer.requests);
- *         res.json(buyer.requests);
- * });
- * [> List All Buyers as a  Boss <]
- * router.get("/buyer/list", ensureAuthenticated, async (req, res) => {
- *         const boss = await User.findById(req.user._id);
- *         await boss.populate("buyers").execPopulate();
- *         console.log(boss.buyers);
- *         res.json(boss.buyers);
- * }); */

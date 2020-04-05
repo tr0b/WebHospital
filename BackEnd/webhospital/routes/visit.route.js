@@ -1,5 +1,6 @@
 const express = require("express");
 const Visit = require("../models/visit");
+const Patient = require("../models/patient");
 const router = new express.Router();
 router.post("/visit", async (req, res) => {
 	//Register A new Visit
@@ -14,6 +15,23 @@ router.post("/visit", async (req, res) => {
 });
 router.get("/visits", (req, res) => {
 	//See all Visits
+	Visit.find({})
+		.then(visits => {
+			res.status(200).send(visits);
+		})
+		.catch(e => {
+			res.status(400).send(e);
+		});
+});
+router.get("/visits/:id", async (req, res) => {
+	//See all Visits of specific patient
+	try {
+		const patient = await Patient.findById(req.params.id);
+		await patient.populate("visits").execPopulate();
+		res.status(200).send(patient.visits);
+	} catch (e) {
+		/* handle error */
+	}
 	Visit.find({})
 		.then(visits => {
 			res.status(200).send(visits);

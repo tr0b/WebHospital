@@ -1,6 +1,7 @@
 const express = require("express");
 const History = require("../models/history");
 const Room = require("../models/room");
+const Patient = require("../models/patient");
 const router = new express.Router();
 router.post("/history", async (req, res) => {
 	//Register A new History
@@ -15,6 +16,23 @@ router.post("/history", async (req, res) => {
 });
 router.get("/histories", (req, res) => {
 	//See all Historys
+	History.find({})
+		.then(histories => {
+			res.status(200).send(histories);
+		})
+		.catch(e => {
+			res.status(400).send(e);
+		});
+});
+router.get("/histories/:id", async (req, res) => {
+	//See all Histories of specific patient
+	try {
+		const patient = await Patient.findById(req.params.id);
+		await patient.populate("histories").execPopulate();
+		res.status(200).send(patient.histories);
+	} catch (e) {
+		/* handle error */
+	}
 	History.find({})
 		.then(histories => {
 			res.status(200).send(histories);
