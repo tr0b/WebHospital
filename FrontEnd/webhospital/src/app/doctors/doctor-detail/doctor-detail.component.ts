@@ -51,12 +51,14 @@ export class DoctorDetailComponent implements OnInit {
       return;
     }
 
+    console.log(form.value.gender);
+    const boolean = form.value.isActive === "Active" ? true : false;
     const freshdoctor: Doctor = {
       idCard: form.value.idCard,
       name: form.value.name,
       last_name: form.value.last_name,
       birthDate: form.value.birthDate,
-      isActive: form.value.isActive,
+      isActive: boolean,
       gender: form.value.gender,
       specialty: form.value.specialty
     };
