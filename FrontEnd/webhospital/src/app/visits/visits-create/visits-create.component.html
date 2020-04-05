@@ -1,0 +1,74 @@
+<h2>Create Visit</h2>
+<div class="row">
+  <div class="col-xs-12 col-md-6 col-md-offset-3">
+    <form (submit)="onAddVisit(postForm)" #postForm="ngForm">
+      <label>* Doctor</label>
+      <input
+        id="doctor"
+        ngModel
+        #doctor="ngModel"
+        name="doctor"
+        type="text"
+        class="form-control"
+        required
+      />
+      <!-- </div>
+         - <div class="form-group"> -->
+      <label>* Patient</label>
+      <input
+        type="text"
+        id="patient"
+        ngModel
+        #patient="ngModel"
+        name="patient"
+        class="form-control"
+        required
+      />
+      <label>* Plant</label>
+      <input
+        type="text"
+        id="plant"
+        ngModel
+        #plant="ngModel"
+        class="form-control"
+        name="plant"
+        required
+      />
+      <label>* Description</label>
+      <input
+        type="text"
+        id="description"
+        ngModel
+        #description="ngModel"
+        class="form-control"
+        name="description"
+        required
+      />
+      <label>Medicine</label>
+      <input
+        type="text"
+        id="medicine"
+        ngModel
+        #medicine="ngModel"
+        class="form-control"
+        name="medicine"
+      />
+      <!-- </div>
+         - <div class="form-group"> -->
+      <div>
+        <button class="btn btn-primary" type="submit">
+          Create Visit
+        </button>
+        <button
+          class="btn btn-danger"
+          type="button"
+          [routerLink]="['/patients']"
+        >
+          Cancel
+        </button>
+        |
+        <a href="#">Return to Home</a>
+      </div>
+    </form>
+  </div>
+</div>

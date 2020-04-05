@@ -31,6 +31,8 @@ import { UsersComponent } from "./users/users.component";
 import { UserDetailComponent } from "./users/user-detail/user-detail.component";
 import { ToastrModule } from "ngx-toastr";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { DoctorCreateComponent } from "./doctors/doctors-create/doctors-create.component";
+import { VisitCreateComponent } from "./visits/visits-create/visits-create.component";
 @NgModule({
   declarations: [
     AppComponent,
@@ -56,7 +58,9 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
     LogoComponent,
     PatientCreateComponent,
     UsersComponent,
-    UserDetailComponent
+    UserDetailComponent,
+    DoctorCreateComponent,
+    VisitCreateComponent
   ],
   imports: [
     BrowserModule,

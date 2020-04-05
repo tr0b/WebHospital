@@ -6,7 +6,7 @@ export interface Doctor {
   birthDate: Date;
   gender: String;
   specialty: String;
-  address: String;
+  address?: String;
   phone?: Array<Number>;
   email?: Array<String>;
 }

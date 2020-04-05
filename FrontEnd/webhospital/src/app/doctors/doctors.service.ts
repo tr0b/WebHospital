@@ -13,8 +13,6 @@ export class DoctorsService {
   private doctorsUpdated = new Subject<Doctor[]>();
   //Constructor with HttpClient
   constructor(private httpClient: HttpClient, private toastr: ToastrService) {}
-  //URL string
-  private url: String = "http://localhost:3000/api/v1/";
 
   //Obtain all Doctors
   getDoctors() {
