@@ -1,12 +1,12 @@
 <div class="row">
   <div class="col-xs-12">
-    <h3>Vista Paciente</h3>
+    <h3>Vista Doctor</h3>
     <div class="btn-group">
       <button
         type="button"
         class="btn btn-primary dropdown-toggle"
         style="position:relative;"
-        (click)="patchPatient()"
+        (click)="patchDoctor()"
         *ngIf="!this.edit"
       >
         Manage
@@ -15,10 +15,10 @@
   </div>
 </div>
 <div class="card-body">
-  <form #postForm="ngForm" (submit)="onPatchPatient(postForm)">
+  <form #postForm="ngForm" (submit)="onPatchDoctor(postForm)">
     <fieldset [disabled]="!this.edit">
       <label for="exampleFormControlInput1"
-        >Insurance Code: {{this.patient._id}}</label
+        >Unique Medical Code: {{this.doctor._id}}</label
       >
       <div class="form-group">
         <label for="exampleFormControlInput1">ID Card: </label>
@@ -27,7 +27,7 @@
           class="form-control"
           name="idCard"
           placeholder=""
-          value="{{this.patient.idCard}}"
+          value="{{this.doctor.idCard}}"
           ngModel
           #idCard="ngModel"
         />
@@ -39,7 +39,7 @@
           class="form-control"
           id="exampleFormControlInput1"
           placeholder=""
-          value="{{this.patient.name}}"
+          value="{{this.doctor.name}}"
           ngModel
           #name="ngModel"
           name="name"
@@ -51,7 +51,7 @@
           name="last_name"
           type="email"
           class="form-control"
-          value="{{this.patient.last_name}}"
+          value="{{this.doctor.last_name}}"
           id="exampleFormControlInput1"
           placeholder=""
           ngModel
@@ -65,32 +65,12 @@
           type="text"
           class="form-control"
           id="exampleFormControlInput1"
-          value="{{this.patient.birthDate}}"
+          value="{{this.doctor.birthDate}}"
           placeholder=""
           ngModel
           #birthDate="ngModel"
           name="birthDate"
         />
-      </div>
-      <div class="form-group">
-        <label for="exampleFormControlSelect1">Blood Type:</label>
-        <select
-          name="bloodType"
-          class="form-control"
-          id="exampleFormControlSelect1"
-          value="{{this.patient.bloodType}}"
-          ngModel
-          #bloodType="ngModel"
-        >
-          <option value="A+">A+</option>
-          <option value="A-">A-</option>
-          <option value="B+">B+</option>
-          <option value="B-">B-</option>
-          <option value="AB+">AB+</option>
-          <option value="AB-">AB-</option>
-          <option value="O+">O+</option>
-          <option value="O-">O-</option>
-        </select>
       </div>
       <div class="form-group">
         <label for="exampleFormControlSelect1">Gender:</label>
@@ -100,25 +80,10 @@
           id="exampleFormControlSelect1"
           ngModel
           #gender="ngModel"
-          value="{{this.patient.gender}}"
+          value="{{this.doctor.gender}}"
         >
           <option value="Male">Male</option>
           <option value="Female">Female</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label for="exampleFormControlSelect1">Marital Status:</label>
-        <select
-          name="maritalStatus"
-          class="form-control"
-          id="exampleFormControlSelect1"
-          ngModel
-          #maritalStatus="ngModel"
-          value="{{this.patient.maritalStatus}}"
-        >
-          <option value="Single">Single</option>
-          <option value="Divorced">Divorced</option>
-          <option value="Married">Married</option>
         </select>
       </div>
       <div class="form-group">
@@ -127,7 +92,7 @@
           id="exampleFormControlSelect1"
           ngModel
           #email="ngModel"
-          value="{{this.patient.email}}"
+          value="{{this.doctor.email}}"
           name="email"
         />
       </div>
@@ -137,7 +102,7 @@
           Guardar Cambios
         </button>
         |
-        <button type="button" class="btn  btn-danger" (click)="patchPatient()">
+        <button type="button" class="btn  btn-danger" (click)="patchDoctor()">
           <i class="nav-icon fas fa-window-close"></i>
           Cancelar
         </button>

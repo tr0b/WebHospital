@@ -21,7 +21,6 @@ import { DoctorItemComponent } from "./doctors/doctors-list/doctor-item/doctor-i
 import { DoctorEditComponent } from "./doctors/doctors-list/doctor-edit/doctor-edit.component";
 import { PatientEditComponent } from "./patients/patients-list/patient-edit/patient-edit.component";
 import { VisitEditComponent } from "./visits/visits-list/visit-edit/visit-edit.component";
-import { HistoryEditComponent } from "./histories/histories-list/history-edit/history-edit.component";
 import { HttpClientModule } from "@angular/common/http";
 import { Routes } from "@angular/router";
 import { LogoComponent } from "./logo/logo.component";
@@ -33,6 +32,10 @@ import { ToastrModule } from "ngx-toastr";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { DoctorCreateComponent } from "./doctors/doctors-create/doctors-create.component";
 import { VisitCreateComponent } from "./visits/visits-create/visits-create.component";
+import { HistoriesComponent } from "./histories/histories.component";
+import { HistoriesListComponent } from "./histories/histories-list/histories-list.component";
+import { HistoriesItemComponent } from "./histories/histories-item/histories-item.component";
+import { DoctorDetailComponent } from './doctors/doctor-detail/doctor-detail.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -53,14 +56,17 @@ import { VisitCreateComponent } from "./visits/visits-create/visits-create.compo
     DoctorEditComponent,
     PatientEditComponent,
     VisitEditComponent,
-    HistoryEditComponent,
-    PatientDetailComponent,
     LogoComponent,
     PatientCreateComponent,
     UsersComponent,
     UserDetailComponent,
     DoctorCreateComponent,
-    VisitCreateComponent
+    VisitCreateComponent,
+    HistoriesComponent,
+    HistoriesListComponent,
+    HistoriesItemComponent,
+    PatientDetailComponent,
+    DoctorDetailComponent
   ],
   imports: [
     BrowserModule,

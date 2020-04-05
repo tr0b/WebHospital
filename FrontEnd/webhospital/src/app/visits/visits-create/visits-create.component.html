@@ -14,16 +14,6 @@
       />
       <!-- </div>
          - <div class="form-group"> -->
-      <label>* Patient</label>
-      <input
-        type="text"
-        id="patient"
-        ngModel
-        #patient="ngModel"
-        name="patient"
-        class="form-control"
-        required
-      />
       <label>* Plant</label>
       <input
         type="text"
@@ -59,11 +49,7 @@
         <button class="btn btn-primary" type="submit">
           Create Visit
         </button>
-        <button
-          class="btn btn-danger"
-          type="button"
-          [routerLink]="['/patients']"
-        >
+        <button class="btn btn-danger" type="button" [routerLink]="['/visits']">
           Cancel
         </button>
         |

@@ -4,9 +4,9 @@ export interface Patient {
   birthDate: Date;
   idCard: Number;
   bloodType: String;
-  gender: String;
-  isActive: Boolean;
-  maritalStatus: String;
+  gender?: String;
+  isActive?: Boolean;
+  maritalStatus?: String;
   phone?: Array<Number>;
   email?: Array<String>;
 }

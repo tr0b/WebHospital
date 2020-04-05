@@ -23,6 +23,21 @@ export class PatientsService {
         this.patientsUpdated.next([...this.patients]);
       });
   }
+
+  getPatient(id: string) {
+    return this.httpClient.get(environment.API_PATH + "patient/" + id);
+  }
+  //Update Patient
+  patchPatient(patient: any, id) {
+    console.log(patient);
+    this.httpClient
+      .patch(environment.API_PATH + "patient/" + id, patient)
+      .subscribe(responseData => {
+        console.log(responseData);
+        this.patientsUpdated.next([...this.patients]);
+        this.toastr.success("¡Paciente Actualizado Exitosamente!", "¡Exito!");
+      });
+  }
   getPatientUpdateListener() {
     return this.patientsUpdated.asObservable();
   }

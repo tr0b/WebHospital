@@ -22,6 +22,11 @@ router.get("/patients", (req, res) => {
 			res.status(400).json(e);
 		});
 });
+//Show a given patient
+router.get("/patient/:id", async (req, res) => {
+	const patient = await Patient.findById(req.params.id);
+	res.status(200).send(patient);
+});
 
 router.patch("/patient/:id", async (req, res) => {
 	//Modify Patient Details
