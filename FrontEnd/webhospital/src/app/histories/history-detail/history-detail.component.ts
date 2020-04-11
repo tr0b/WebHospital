@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
-import { VisitsService } from "../visits.service";
-import { Visit } from "../../models/visit.model";
+import { HistoriesService } from "../histories.service";
+import { History } from "../../models/history.model";
 import { FormGroup, FormControl, Validators } from "@angular/forms";
 import { NgForm } from "@angular/forms";
 import { Patient } from "../../models/patient.model";
@@ -12,28 +12,28 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { ToastrService } from "ngx-toastr";
 
 @Component({
-  selector: "app-visit",
-  templateUrl: "./visit-detail.component.html",
-  styleUrls: ["./visit-detail.component.css"]
+  selector: "app-history",
+  templateUrl: "./history-detail.component.html",
+  styleUrls: ["./history-detail.component.css"]
 })
-export class VisitDetailComponent implements OnInit {
-  visit: Visit;
+export class HistoryDetailComponent implements OnInit {
+  history: History;
   edit: boolean = false;
   selectInfo: any[] = [];
-  selectVisit: string;
+  selectHistory: string;
   id: string;
   patientId: string;
   private patient: Patient;
 
   constructor(
     private router: ActivatedRoute,
-    private visitsService: VisitsService,
+    private historiesService: HistoriesService,
     public patientsService: PatientsService,
     private toastr: ToastrService
   ) {
     this.router.params.subscribe(params => {
       this.id = params["id"];
-      this.getVisit(this.id);
+      this.getHistory(this.id);
     });
   }
 
@@ -43,34 +43,34 @@ export class VisitDetailComponent implements OnInit {
     );
   }
 
-  getVisit(id: string) {
-    this.visitsService.getVisit(id).subscribe((data: Visit) => {
-      this.visit = data;
-      console.log(this.visit);
+  getHistory(id: string) {
+    this.historiesService.getHistory(id).subscribe((data: History) => {
+      this.history = data;
+      console.log(this.history);
     });
   }
 
-  //Visit gets updated with PATCH method
-  patchVisit() {
+  //History gets updated with PATCH method
+  patchHistory() {
     this.edit = !this.edit;
   }
 
-  onPatchVisit(form: NgForm) {
+  onPatchHistory(form: NgForm) {
     if (form.invalid) {
       return;
     }
 
-    const freshvisit: Visit = {
-      date: form.value.date,
-      doctor: form.value.doctor,
-      patient: form.value.patient,
-      plant: form.value.plant,
-      description: form.value.description
+    const freshhistory: History = {
+      dateIn: form.value.dateIn,
+      dateOut: form.value.dateOut,
+      bedId: form.value.bedId,
+      patient: this.patientId,
+      room: form.value.room
     };
 
     console.log("Imprimiendo formulario...");
-    console.log(freshvisit);
+    console.log(freshhistory);
     console.log("Formulario impreso");
-    this.visitsService.patchVisit(freshvisit, this.id);
+    this.historiesService.patchHistory(freshhistory, this.id);
   }
 }

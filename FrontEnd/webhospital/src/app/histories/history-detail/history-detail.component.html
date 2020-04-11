@@ -1,0 +1,87 @@
+<div class="row">
+  <div class="col-xs-12">
+    <h3>Vista Internado</h3>
+    <h4>ID: {{this.patientId}}</h4>
+    <div class="btn-group">
+      <button
+        type="button"
+        class="btn btn-primary dropdown-toggle"
+        style="position:relative;"
+        (click)="patchHistory()"
+        *ngIf="!this.edit"
+      >
+        Manage
+      </button>
+    </div>
+  </div>
+</div>
+<div class="card-body">
+  <form #postForm="ngForm" (submit)="onPatchHistory(postForm)">
+    <fieldset [disabled]="!this.edit">
+      <label for="exampleFormControlInput1"
+        >History Code: {{this.history._id}}</label
+      >
+      <div class="form-group">
+        <label for="exampleFormControlInput1">DateIn: </label>
+        <input
+          type="text"
+          class="form-control"
+          name="dateIn"
+          placeholder=""
+          value="{{this.history.dateIn}}"
+          ngModel
+          #dateIn="ngModel"
+        />
+      </div>
+      <div class="form-group">
+        <label for="exampleFormControlInput1">DateOut:</label>
+        <input
+          type="text"
+          class="form-control"
+          id="exampleFormControlInput1"
+          placeholder=""
+          value="{{this.history.dateOut}}"
+          ngModel
+          #dateOut="ngModel"
+          name="dateOut"
+        />
+      </div>
+      <div class="form-group">
+        <label for="exampleFormControlInput1">BedId:</label>
+        <input
+          name="bedId"
+          type="description"
+          class="form-control"
+          value="{{this.history.bedId}}"
+          id="exampleFormControlInput1"
+          placeholder=""
+          ngModel
+          #bedId="ngModel"
+        />
+      </div>
+      <div class="form-group">
+        <label for="exampleFormControlSelect1">Room:</label>
+        <input
+          id="exampleFormControlSelect1"
+          class="form-control"
+          ngModel
+          #room="ngModel"
+          value="{{this.history.room}}"
+          name="room"
+        />
+      </div>
+      <div>
+        <button type="submit" class="btn  btn-success" [disabled]="!form.valid">
+          <i class="nav-icon fas fa-user-edit"></i>
+          Guardar Cambios
+        </button>
+        |
+        <button type="button" class="btn  btn-danger" (click)="patchHistory()">
+          <i class="nav-icon fas fa-window-close"></i>
+          Cancelar
+        </button>
+      </div>
+    </fieldset>
+    <div class="btn__box" *ngIf="this.edit"></div>
+  </form>
+</div>

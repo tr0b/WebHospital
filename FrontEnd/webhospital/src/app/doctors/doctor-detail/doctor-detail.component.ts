@@ -60,7 +60,8 @@ export class DoctorDetailComponent implements OnInit {
       birthDate: form.value.birthDate,
       isActive: boolean,
       gender: form.value.gender,
-      specialty: form.value.specialty
+      specialty: form.value.specialty,
+      email: form.value.email
     };
 
     console.log("Imprimiendo formulario...");

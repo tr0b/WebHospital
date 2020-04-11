@@ -37,6 +37,8 @@ import { HistoriesListComponent } from "./histories/histories-list/histories-lis
 import { HistoriesItemComponent } from "./histories/histories-item/histories-item.component";
 import { DoctorDetailComponent } from './doctors/doctor-detail/doctor-detail.component';
 import { VisitDetailComponent } from './visits/visit-detail/visit-detail.component';
+import { HistoryCreateComponent } from './histories/histories-create/histories-create.component';
+import { HistoryDetailComponent } from './histories/history-detail/history-detail.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -68,7 +70,9 @@ import { VisitDetailComponent } from './visits/visit-detail/visit-detail.compone
     HistoriesItemComponent,
     PatientDetailComponent,
     DoctorDetailComponent,
-    VisitDetailComponent
+    VisitDetailComponent,
+    HistoryCreateComponent,
+    HistoryDetailComponent
   ],
   imports: [
     BrowserModule,

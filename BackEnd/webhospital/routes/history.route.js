@@ -38,7 +38,13 @@ router.get("/histories/:id", async (req, res) => {
 router.patch("/history/:id", async (req, res) => {
 	//Modify History Details
 	const updates = Object.keys(req.body);
-	const allowedUpdates = ["dateIn", "dateOut", "bedInfo", "patient"];
+	const allowedUpdates = [
+		"dateIn",
+		"dateOut",
+		"bedId",
+		"patient",
+		"room"
+	];
 	const isValidOperation = updates.every(update =>
 		allowedUpdates.includes(update)
 	);
@@ -55,6 +61,12 @@ router.patch("/history/:id", async (req, res) => {
 		console.log(e);
 		/* handle error */
 	}
+});
+//Show a given history
+router.get("/history/:id", async (req, res) => {
+	const history = await History.findById(req.params.id);
+	console.log(history);
+	res.status(200).json(history);
 });
 //See all Histories in a given Room
 router.get("/histories/:id", async (req, res) => {

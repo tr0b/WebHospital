@@ -44,7 +44,6 @@
                     <th scope="row">Fecha Salida</th>
                     <th scope="row">Numero de Cama</th>
                     <th scope="row">Habitacion</th>
-                    <th scope="row">Planta</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -55,9 +54,8 @@
                     <td scope="col">{{ history._id | slice: -5 }}</td>
                     <td scope="col">{{ history.dateIn}}</td>
                     <td scope="col">{{ history.dateOut}}</td>
-                    <td scope="col">{{ history.bedNumber}}</td>
+                    <td scope="col">{{ history.bedId}}</td>
                     <td scope="col">{{ history.room}}</td>
-                    <td scope="col">{{ history.plant}}</td>
                   </tr>
                 </tbody>
               </table>

@@ -25,16 +25,18 @@
         name="plant"
         required
       />
-      <label>* Description</label>
-      <input
-        type="text"
-        id="description"
-        ngModel
-        #description="ngModel"
-        class="form-control"
-        name="description"
-        required
-      />
+      <div class="md-form">
+        <label for="form7">* Description</label>
+        <textarea
+          id="form7"
+          name="description"
+          ngModel
+          #description="ngModel"
+          class="md-textarea form-control"
+          rows="3"
+        ></textarea>
+      </div>
+      <!--Textare
       <label>Medicine</label>
       <input
         type="text"

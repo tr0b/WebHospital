@@ -1,0 +1,67 @@
+<h2>Crear Internado para Paciente</h2>
+<h3>ID: {{this.patientId}}</h3>
+<div class="row">
+  <div class="col-xs-12 col-md-6 col-md-offset-3">
+    <form (submit)="onAddHistory(postForm)" #postForm="ngForm">
+      <label>* DateIn</label>
+      <input
+        id="dateIn"
+        ngModel
+        #dateIn="ngModel"
+        name="dateIn"
+        type="text"
+        class="form-control"
+        required
+      />
+      <!-- </div>
+         - <div class="form-group"> -->
+      <label>* DateOut</label>
+      <input
+        type="text"
+        id="dateOut"
+        ngModel
+        #dateOut="ngModel"
+        class="form-control"
+        name="dateOut"
+        required
+      />
+      <div class="md-form">
+        <label for="form7">* BedId</label>
+        <input
+          type="text"
+          id="bedId"
+          name="bedId"
+          ngModel
+          #bedId="ngModel"
+          class="form-control"
+          value=""
+        />
+      </div>
+      <div class="md-form">
+        <label for="form7">* Room</label>
+        <input
+          type="text"
+          id="room"
+          name="room"
+          ngModel
+          #room="ngModel"
+          class="form-control"
+        />
+      </div>
+      <div>
+        <button class="btn btn-primary" type="submit">
+          Create History
+        </button>
+        <button
+          class="btn btn-danger"
+          type="button"
+          [routerLink]="['/histories']"
+        >
+          Cancel
+        </button>
+        |
+        <a href="#">Return to Home</a>
+      </div>
+    </form>
+  </div>
+</div>
