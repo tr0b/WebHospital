@@ -23,6 +23,13 @@ router.get("/visits", (req, res) => {
 			res.status(400).send(e);
 		});
 });
+
+//Show a given visit
+router.get("/visit/:id", async (req, res) => {
+	const visit = await Visit.findById(req.params.id);
+	console.log(visit);
+	res.status(200).json(visit);
+});
 router.get("/visits/:id", async (req, res) => {
 	//See all Visits of specific patient
 	try {
@@ -32,13 +39,6 @@ router.get("/visits/:id", async (req, res) => {
 	} catch (e) {
 		/* handle error */
 	}
-	Visit.find({})
-		.then(visits => {
-			res.status(200).send(visits);
-		})
-		.catch(e => {
-			res.status(400).send(e);
-		});
 });
 
 router.patch("/visit/:id", async (req, res) => {

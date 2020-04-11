@@ -4,5 +4,4 @@ export interface Visit {
   patient: String;
   plant: String;
   description: String;
-  medicines?: Array<String>;
 }

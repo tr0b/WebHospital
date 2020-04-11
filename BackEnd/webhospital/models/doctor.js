@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const validator = require("validator");
 const { Schema } = mongoose;
 
 //Doctor Schema
@@ -13,8 +14,15 @@ const DoctorSchema = new Schema({
 	address: {
 		canton: { type: mongoose.Schema.Types.ObjectId, ref: "Canton" }
 	},
-	phone: { type: Array },
-	email: { type: Array }
+	phone: { type: Number },
+	email: {
+		type: String,
+		validate(value) {
+			if (!validator.isEmail(value)) {
+				throw new Error("Email is Invalid!");
+			}
+		}
+	}
 });
 //Export of the Country Model
 const Doctor = mongoose.model("Doctor", DoctorSchema);

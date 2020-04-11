@@ -3,7 +3,7 @@ import { Visit } from "../../models/visit.model";
 import { Subscription } from "rxjs/Subscription";
 import { VisitsService } from "../visits.service";
 import { ActivatedRoute } from "@angular/router";
-
+import { PatientsService } from "../../patients/patients.service";
 import { NgForm } from "@angular/forms";
 @Component({
   selector: "app-visits-list",
@@ -16,6 +16,7 @@ export class VisitsListComponent implements OnInit, OnDestroy {
   private visitSub: Subscription;
   constructor(
     public visitsService: VisitsService,
+    public patientsService: PatientsService,
     private route: ActivatedRoute
   ) {
     this.route.params.subscribe(params => {
@@ -30,6 +31,9 @@ export class VisitsListComponent implements OnInit, OnDestroy {
       .subscribe((visits: Visit[]) => {
         this.visits = visits;
       });
+    this.patientsService.currentPatientId.subscribe(
+      patientId => (this.patientId = patientId)
+    );
   }
 
   ngOnDestroy() {

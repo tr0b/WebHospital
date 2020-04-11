@@ -36,6 +36,7 @@ import { HistoriesComponent } from "./histories/histories.component";
 import { HistoriesListComponent } from "./histories/histories-list/histories-list.component";
 import { HistoriesItemComponent } from "./histories/histories-item/histories-item.component";
 import { DoctorDetailComponent } from './doctors/doctor-detail/doctor-detail.component';
+import { VisitDetailComponent } from './visits/visit-detail/visit-detail.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -66,7 +67,8 @@ import { DoctorDetailComponent } from './doctors/doctor-detail/doctor-detail.com
     HistoriesListComponent,
     HistoriesItemComponent,
     PatientDetailComponent,
-    DoctorDetailComponent
+    DoctorDetailComponent,
+    VisitDetailComponent
   ],
   imports: [
     BrowserModule,

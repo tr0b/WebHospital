@@ -4,12 +4,15 @@ import { Patient } from "../models/patient.model";
 import { HttpClient } from "@angular/common/http";
 import { ToastrService } from "ngx-toastr";
 import { environment } from "src/environments/environment";
+import { BehaviorSubject } from "rxjs";
 @Injectable({ providedIn: "root" })
 export class PatientsService {
   //Patient List
   private patients: Patient[] = [];
   //Updated Patient List after POST
   private patientsUpdated = new Subject<Patient[]>();
+  patientIdSource = new BehaviorSubject("-");
+  currentPatientId = this.patientIdSource.asObservable();
   //Constructor with HttpClient
   constructor(private httpClient: HttpClient, private toastr: ToastrService) {}
   //URL string
@@ -53,5 +56,8 @@ export class PatientsService {
         this.toastr.success("¡Paciente Ingresado Exitosamente!", "¡Exito!");
         console.log("La notificacion se disparo");
       });
+  }
+  changePatientId(id: string) {
+    this.patientIdSource.next(id);
   }
 }

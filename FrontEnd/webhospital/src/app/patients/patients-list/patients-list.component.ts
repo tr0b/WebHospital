@@ -11,6 +11,7 @@ import { NgForm } from "@angular/forms";
 })
 export class PatientsListComponent implements OnInit, OnDestroy {
   patients: Patient[] = [];
+  patientId: string;
   private patientSub: Subscription;
   constructor(public patientsService: PatientsService) {}
 
@@ -21,9 +22,15 @@ export class PatientsListComponent implements OnInit, OnDestroy {
       .subscribe((patients: Patient[]) => {
         this.patients = patients;
       });
+    this.patientsService.currentPatientId.subscribe(
+      patientId => (this.patientId = patientId)
+    );
   }
 
   ngOnDestroy() {
     this.patientSub.unsubscribe();
+  }
+  setCurrentPatientId(id: string) {
+    this.patientsService.changePatientId(id);
   }
 }

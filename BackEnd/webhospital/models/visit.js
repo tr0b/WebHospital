@@ -16,11 +16,7 @@ const VisitSchema = new Schema(
 		plant: { required: true, type: mongoose.Schema.Types.ObjectId },
 		//room
 
-		description: { type: String, required: true },
-		medicines: {
-			type: Array,
-			medicine: { type: Schema.Types.ObjectId }
-		}
+		description: { type: String, required: true }
 	},
 
 	{ timestamps: true }

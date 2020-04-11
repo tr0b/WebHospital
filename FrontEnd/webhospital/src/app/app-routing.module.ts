@@ -8,9 +8,9 @@ import { HistoriesComponent } from "./histories/histories.component";
 import { PatientCreateComponent } from "./patients/patient-create/patient-create.component";
 import { DoctorCreateComponent } from "./doctors/doctors-create/doctors-create.component";
 import { VisitCreateComponent } from "./visits/visits-create/visits-create.component";
+import { VisitDetailComponent } from "./visits/visit-detail/visit-detail.component";
 import { PatientDetailComponent } from "./patients/patient-detail/patient-detail.component";
 import { DoctorDetailComponent } from "./doctors/doctor-detail/doctor-detail.component";
-import { HistoriesListComponent } from "./histories/histories-list/histories-list.component";
 import { LoginComponent } from "./login/login.component";
 import { RegisterComponent } from "./register/register.component";
 const routes: Routes = [
@@ -20,11 +20,11 @@ const routes: Routes = [
     component: PatientsComponent
   },
   { path: "patient/:id", component: PatientDetailComponent },
-  { path: "histories/:id", component: HistoriesListComponent },
+  { path: "histories/:id", component: HistoriesComponent },
   { path: "doctor/:id", component: DoctorDetailComponent },
   { path: "doctors", component: DoctorsComponent },
-  { path: "visits", component: VisitsComponent },
-  { path: "histories", component: HistoriesComponent },
+  { path: "visits/:id", component: VisitsComponent },
+  { path: "visit/:id", component: VisitDetailComponent },
   { path: "addPatient", component: PatientCreateComponent },
   { path: "addDoctor", component: DoctorCreateComponent },
   { path: "addVisit", component: VisitCreateComponent },

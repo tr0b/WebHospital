@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const { Schema } = mongoose;
-
+const validator = require("validator");
 //Patient Schema
 const PatientSchema = new Schema({
 	name: { type: String, required: true },
@@ -14,8 +14,15 @@ const PatientSchema = new Schema({
 	address: {
 		canton: { type: mongoose.Schema.Types.ObjectId, ref: "Canton" }
 	},
-	phone: { type: Array },
-	email: { type: Array }
+	phone: { type: Number },
+	email: {
+		type: String,
+		validate(value) {
+			if (!validator.isEmail(value)) {
+				throw new Error("Email is Invalid!");
+			}
+		}
+	}
 });
 PatientSchema.virtual("visits", {
 	ref: "Visit",
