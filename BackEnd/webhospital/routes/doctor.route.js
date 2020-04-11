@@ -15,7 +15,8 @@ router.post("/doctor", async (req, res) => {
 //Show a given doctor
 router.get("/doctor/:id", async (req, res) => {
 	const doctor = await Doctor.findById(req.params.id);
-	res.status(200).send(doctor);
+	console.log(doctor);
+	res.status(200).json(doctor);
 });
 router.get("/doctors", (req, res) => {
 	//See all Doctors

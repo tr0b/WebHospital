@@ -44,6 +44,7 @@
                     <th scope="row">Full Name</th>
                     <th scope="row">Gender</th>
                     <th scope="row">Birth Date</th>
+                    <th scope="row" rowspan=""></th>
                   </tr>
                 </thead>
                 <tbody>
@@ -60,6 +61,27 @@
                       {{patient.gender}}
                     </td>
                     <td>{{patient.birthDate | slice: 0:10}}</td>
+
+                    <td>
+                      <button
+                        type="button"
+                        class="btn btn-primary dropdown-toggle"
+                        style="position:relative;"
+                        [routerLink]="['/histories',patient._id]"
+                      >
+                        History
+                      </button>
+                    </td>
+                    <td>
+                      <button
+                        type="button"
+                        class="btn btn-primary dropdown-toggle"
+                        style="position:relative;"
+                        [routerLink]="['/visits',patient._id]"
+                      >
+                        Visits
+                      </button>
+                    </td>
                   </tr>
                 </tbody>
               </table>

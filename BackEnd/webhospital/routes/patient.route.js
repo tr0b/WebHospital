@@ -25,7 +25,8 @@ router.get("/patients", (req, res) => {
 //Show a given patient
 router.get("/patient/:id", async (req, res) => {
 	const patient = await Patient.findById(req.params.id);
-	res.status(200).send(patient);
+	console.log(patient);
+	res.status(200).json(patient);
 });
 
 router.patch("/patient/:id", async (req, res) => {

@@ -11,16 +11,6 @@
       >
         Manage
       </button>
-      ||
-
-      <button
-        type="button"
-        class="btn btn-primary dropdown-toggle"
-        style="position:relative;"
-        [routerLink]="['/histories', this.patient._id]"
-      >
-        History
-      </button>
     </div>
   </div>
 </div>
@@ -28,7 +18,8 @@
   <form #postForm="ngForm" (submit)="onPatchPatient(postForm)">
     <fieldset [disabled]="!this.edit">
       <label for="exampleFormControlInput1"
-        >Insurance Code: {{this.patient._id}}</label
+        >Insurance Code: {{this.patient._id}} | Name:
+        {{this.patient.name}}</label
       >
       <div class="form-group">
         <label for="exampleFormControlInput1">ID Card: </label>

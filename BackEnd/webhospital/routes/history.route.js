@@ -31,15 +31,8 @@ router.get("/histories/:id", async (req, res) => {
 		await patient.populate("histories").execPopulate();
 		res.status(200).send(patient.histories);
 	} catch (e) {
-		/* handle error */
+		res.status(400).send(e);
 	}
-	History.find({})
-		.then(histories => {
-			res.status(200).send(histories);
-		})
-		.catch(e => {
-			res.status(400).send(e);
-		});
 });
 
 router.patch("/history/:id", async (req, res) => {

@@ -36,7 +36,7 @@ export class HistoriesService {
       .subscribe(responseData => {
         console.log(responseData);
         this.historiesUpdated.next([...this.histories]);
-        this.toastr.success("¡Paciente Actualizado Exitosamente!", "¡Exito!");
+        this.toastr.success("¡Historia Actualizado Exitosamente!", "¡Exito!");
       });
   }
   getHistoryUpdateListener() {
@@ -50,7 +50,7 @@ export class HistoriesService {
         console.log(responseData);
         this.histories.push(history);
         this.historiesUpdated.next([...this.histories]);
-        this.toastr.success("¡Paciente Ingresado Exitosamente!", "¡Exito!");
+        this.toastr.success("¡Historia Ingresado Exitosamente!", "¡Exito!");
         console.log("La notificacion se disparo");
       });
   }

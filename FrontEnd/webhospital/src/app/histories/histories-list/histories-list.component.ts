@@ -12,15 +12,19 @@ import { NgForm } from "@angular/forms";
 })
 export class HistoriesListComponent implements OnInit, OnDestroy {
   histories: History[] = [];
+  patientId: string;
   private historySub: Subscription;
   constructor(
     public historiesService: HistoriesService,
     private route: ActivatedRoute
-  ) {}
+  ) {
+    this.route.params.subscribe(params => {
+      this.patientId = params["id"];
+    });
+  }
 
   ngOnInit() {
-    let patientid = this.route.snapshot.params.id;
-    this.historiesService.getHistories(patientid);
+    this.historiesService.getHistories(this.patientId);
     this.historySub = this.historiesService
       .getHistoryUpdateListener()
       .subscribe((histories: History[]) => {
