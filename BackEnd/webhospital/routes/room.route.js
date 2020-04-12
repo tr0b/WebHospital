@@ -3,9 +3,10 @@ const express = require("express");
 const Room = require("../models/room");
 //Import of Plant Model
 const Plant = require("../models/plant");
+const auth = require("../middleware/auth");
 const router = new express.Router();
 //Register A new Room
-router.post("/room", async (req, res) => {
+router.post("/room", auth, async (req, res) => {
 	const room = new Room(req.body);
 	try {
 		await room.save();
@@ -16,7 +17,7 @@ router.post("/room", async (req, res) => {
 	}
 });
 //See all Rooms
-router.get("/rooms", (req, res) => {
+router.get("/rooms", auth, (req, res) => {
 	Room.find({})
 		.then(rooms => {
 			res.status(200).send(rooms);
@@ -27,7 +28,7 @@ router.get("/rooms", (req, res) => {
 });
 
 //Modify Room Details
-router.patch("/room/:id", async (req, res) => {
+router.patch("/room/:id", auth, async (req, res) => {
 	const updates = Object.keys(req.body);
 	const allowedUpdates = ["name", "plant"];
 	const isValidOperation = updates.every(update =>
@@ -47,7 +48,7 @@ router.patch("/room/:id", async (req, res) => {
 	}
 });
 //See all Rooms in a Certain Plant
-router.get("/rooms/:id", async (req, res) => {
+router.get("/rooms/:id", auth, async (req, res) => {
 	try {
 		const plant = await Plant.findById(req.params.id);
 		await plant.populate("rooms").execPopulate();

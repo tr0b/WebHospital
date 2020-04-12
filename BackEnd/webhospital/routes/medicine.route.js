@@ -1,7 +1,8 @@
 const express = require("express");
 const Medicine = require("../models/medicine");
 const router = new express.Router();
-router.post("/medicine", async (req, res) => {
+const auth = require("../middleware/auth");
+router.post("/medicine", auth, async (req, res) => {
 	//Register A new Medicine
 	const medicine = new Medicine(req.body);
 	try {
@@ -13,11 +14,11 @@ router.post("/medicine", async (req, res) => {
 	}
 });
 //Show a given medicine
-router.get("/medicine/:id", async (req, res) => {
+router.get("/medicine/:id", auth, async (req, res) => {
 	const medicine = await Medicine.findById(req.params.id);
 	res.status(200).send(medicine);
 });
-router.get("/medicines", (req, res) => {
+router.get("/medicines", auth, (req, res) => {
 	//See all Medicines
 	Medicine.find({})
 		.then(medicines => {
@@ -28,7 +29,7 @@ router.get("/medicines", (req, res) => {
 		});
 });
 
-router.patch("/medicine/:id", async (req, res) => {
+router.patch("/medicine/:id", auth, async (req, res) => {
 	//Modify Medicine Details
 	const updates = Object.keys(req.body);
 	const allowedUpdates = ["name", "description", "dose", "hoursPerDose"];

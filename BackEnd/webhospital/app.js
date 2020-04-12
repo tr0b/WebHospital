@@ -7,7 +7,7 @@ const port = 3000;
 require("./db/database");
 
 app.get("/", (req, res) => res.send("Web Hospital!"));
-
-app.listen(port, () => console.log(`InstHealth Service listening on port ${port}!`));
-
+app.listen(port, () =>
+	console.log(`InstHealth Service listening on port ${port}!`)
+);
 module.exports = app;

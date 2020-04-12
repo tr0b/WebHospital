@@ -16,7 +16,7 @@ import { RegisterComponent } from "./register/register.component";
 import { HistoryCreateComponent } from "./histories/histories-create/histories-create.component";
 import { HistoryDetailComponent } from "./histories/history-detail/history-detail.component";
 const routes: Routes = [
-  { path: "", component: HomeComponent },
+  { path: "", component: LoginComponent },
   {
     path: "patients",
     component: PatientsComponent

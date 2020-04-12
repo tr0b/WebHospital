@@ -47,9 +47,20 @@ const UserSchema = new Schema({
 		}
 	]
 });
+UserSchema.methods.toJSON = function() {
+	const user = this;
+	const userObject = user.toObject();
+	delete userObject.password;
+	delete userObject.tokens;
+	return userObject;
+};
 UserSchema.methods.generateAuthToken = async function() {
 	const user = this;
-	const token = jwt.sign({ _id: user._id.toString() }, "usertkn");
+	const token = jwt.sign(
+		{ _id: user._id.toString() },
+		process.env.SECRET
+	);
+	console.log(token);
 	user.tokens = user.tokens.concat({ token });
 	await user.save();
 	return token;
@@ -75,7 +86,6 @@ UserSchema.statics.findByCredentials = async (email, password) => {
 
 UserSchema.pre("save", async function(next) {
 	const user = this;
-	console.log("Test 43");
 	if (user.isModified("password")) {
 		user.password = await bcrypt.hash(user.password, 9);
 	}
