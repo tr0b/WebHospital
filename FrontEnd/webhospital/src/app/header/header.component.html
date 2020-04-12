@@ -1,28 +1,68 @@
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a routerLink="/patients" class="navbar-brand">Patients</a>
-      <a routerLink="/doctors" class="navbar-brand">Doctors</a>
-      <a routerLink="" class="navbar-brand">Home</a>
-      <!-- <a routerLink="/visits" class="navbar-brand">Visits</a>
+<mat-toolbar color="primary">
+  <span>
+    <a routerLink="/">Home</a>
+  </span>
+  <span class="spacer"></span>
+  <ul>
+    <li *ngIf="userIsAuthenticated">
+      <a mat-button routerLink="/patients" routerLinkActive="mat-accent"
+        >Patients</a
+      >
+    </li>
+    <li *ngIf="userIsAuthenticated">
+      <a mat-button routerLink="/doctors" routerLinkActive="mat-accent"
+        >Doctors</a
+      >
+    </li>
+    <li *ngIf="userIsAuthenticated">
+      <a mat-button routerLink="/profile" routerLinkActive="mat-accent"
+        >My Profile</a
+      >
+    </li>
+
+    <li>
+      <button mat-button [matMenuTriggerFor]="menu">Language</button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item>Español</button>
+        <button mat-menu-item>English</button>
+        <button mat-menu-item>Italiano</button>
+        <button mat-menu-item>Ελλενυκα</button>
+      </mat-menu>
+    </li>
+    <li *ngIf="userIsAuthenticated">
+      <button mat-button (click)="onLogout()">Logout</button>
+    </li>
+
+    <li *ngIf="!userIsAuthenticated">
+      <button mat-button routerLink="/login">Log In</button>
+    </li>
+  </ul>
+</mat-toolbar>
+<!-- <nav class="navbar navbar-default">
+   -   <div class="container-fluid">
+   -     <div class="navbar-header">
+   -       <a routerLink="/patients" class="navbar-brand">Patients</a>
+   -       <a routerLink="/doctors" class="navbar-brand">Doctors</a>
+   -       <a routerLink="" class="navbar-brand">Home</a> -->
+<!-- <a routerLink="/visits" class="navbar-brand">Visits</a>
          - <a routerLink="/histories" class="navbar-brand">Histories</a> -->
-    </div>
-    <div class="collapse navbar-collapse">
-      <ul class="nav navbar-nav navbar-right">
-        <li><a routerLink="/login">Login</a></li>
-        <li><a routerLink="/register">Register</a></li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" role="button"
-            >Manage <span class="caret"></span
-          ></a>
-          <ul class="dropdown-menu">
-            <li><a href="#">Manage Account</a></li>
-            <li><a href="#">Contact Us</a></li>
-          </ul>
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav>
+<!--     </div>
+   -     <div class="collapse navbar-collapse">
+   -       <ul class="nav navbar-nav navbar-right">
+   -         <li><a routerLink="/login">Login</a></li>
+   -         <li><a routerLink="/register">Register</a></li>
+   -       </ul>
+   -       <ul class="nav navbar-nav navbar-right">
+   -         <li class="dropdown">
+   -           <a href="#" class="dropdown-toggle" role="button"
+   -             >Manage <span class="caret"></span
+   -           ></a>
+   -           <ul class="dropdown-menu">
+   -             <li><a href="#">Manage Account</a></li>
+   -             <li><a href="#">Contact Us</a></li>
+   -           </ul>
+   -         </li>
+   -       </ul>
+   -     </div>
+   -   </div>
+   - </nav> -->

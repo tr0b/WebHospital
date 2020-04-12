@@ -27,6 +27,7 @@
                     type="button"
                     class="btn  btn-success"
                     [routerLink]="['/addDoctor']"
+                    *ngIf="userIsAuthenticated"
                   >
                     <i class="fas fa-user-plus"></i>
                     Agregar

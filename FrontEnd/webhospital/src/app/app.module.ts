@@ -21,7 +21,7 @@ import { DoctorItemComponent } from "./doctors/doctors-list/doctor-item/doctor-i
 import { DoctorEditComponent } from "./doctors/doctors-list/doctor-edit/doctor-edit.component";
 import { PatientEditComponent } from "./patients/patients-list/patient-edit/patient-edit.component";
 import { VisitEditComponent } from "./visits/visits-list/visit-edit/visit-edit.component";
-import { HttpClientModule } from "@angular/common/http";
+import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { Routes } from "@angular/router";
 import { LogoComponent } from "./logo/logo.component";
 import { FormsModule } from "@angular/forms";
@@ -35,10 +35,20 @@ import { VisitCreateComponent } from "./visits/visits-create/visits-create.compo
 import { HistoriesComponent } from "./histories/histories.component";
 import { HistoriesListComponent } from "./histories/histories-list/histories-list.component";
 import { HistoriesItemComponent } from "./histories/histories-item/histories-item.component";
-import { DoctorDetailComponent } from './doctors/doctor-detail/doctor-detail.component';
-import { VisitDetailComponent } from './visits/visit-detail/visit-detail.component';
-import { HistoryCreateComponent } from './histories/histories-create/histories-create.component';
-import { HistoryDetailComponent } from './histories/history-detail/history-detail.component';
+import { DoctorDetailComponent } from "./doctors/doctor-detail/doctor-detail.component";
+import { VisitDetailComponent } from "./visits/visit-detail/visit-detail.component";
+import { HistoryCreateComponent } from "./histories/histories-create/histories-create.component";
+import { HistoryDetailComponent } from "./histories/history-detail/history-detail.component";
+import { AuthInterceptor } from "./auth-interceptor";
+import {
+  MatInputModule,
+  MatCardModule,
+  MatButtonModule,
+  MatMenuModule,
+  MatToolbarModule
+} from "@angular/material";
+import { MatIconModule } from "@angular/material";
+import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 @NgModule({
   declarations: [
     AppComponent,
@@ -80,9 +90,18 @@ import { HistoryDetailComponent } from './histories/history-detail/history-detai
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    MatInputModule,
+    MatIconModule,
+    MatButtonModule,
+    MatMenuModule,
+    MatCardModule,
+    MatToolbarModule,
+    MatProgressSpinnerModule,
     ToastrModule.forRoot()
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

@@ -15,29 +15,68 @@ import { LoginComponent } from "./login/login.component";
 import { RegisterComponent } from "./register/register.component";
 import { HistoryCreateComponent } from "./histories/histories-create/histories-create.component";
 import { HistoryDetailComponent } from "./histories/history-detail/history-detail.component";
+import { AuthGuard } from "./auth.guard";
 const routes: Routes = [
-  { path: "", component: LoginComponent },
+  { path: "", component: HomeComponent, canActivate: [AuthGuard] },
   {
     path: "patients",
-    component: PatientsComponent
+    component: PatientsComponent,
+    canActivate: [AuthGuard]
   },
-  { path: "patient/:id", component: PatientDetailComponent },
-  { path: "histories/:id", component: HistoriesComponent },
-  { path: "history/:id", component: HistoryDetailComponent },
-  { path: "doctor/:id", component: DoctorDetailComponent },
-  { path: "doctors", component: DoctorsComponent },
-  { path: "visits/:id", component: VisitsComponent },
-  { path: "visit/:id", component: VisitDetailComponent },
-  { path: "addPatient", component: PatientCreateComponent },
-  { path: "addDoctor", component: DoctorCreateComponent },
-  { path: "addVisit", component: VisitCreateComponent },
-  { path: "addHistory", component: HistoryCreateComponent },
+  {
+    path: "patient/:id",
+    component: PatientDetailComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: "histories/:id",
+    component: HistoriesComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: "history/:id",
+    component: HistoryDetailComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: "doctor/:id",
+    component: DoctorDetailComponent,
+    canActivate: [AuthGuard]
+  },
+  { path: "doctors", component: DoctorsComponent, canActivate: [AuthGuard] },
+  { path: "visits/:id", component: VisitsComponent, canActivate: [AuthGuard] },
+  {
+    path: "visit/:id",
+    component: VisitDetailComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: "addPatient",
+    component: PatientCreateComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: "addDoctor",
+    component: DoctorCreateComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: "addVisit",
+    component: VisitCreateComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: "addHistory",
+    component: HistoryCreateComponent,
+    canActivate: [AuthGuard]
+  },
   { path: "login", component: LoginComponent },
   { path: "register", component: RegisterComponent }
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [AuthGuard]
 })
 export class AppRoutingModule {}

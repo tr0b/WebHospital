@@ -27,6 +27,7 @@
                     type="button"
                     class="btn  btn-success"
                     [routerLink]="['/addPatient']"
+                    *ngIf="userIsAuthenticated"
                   >
                     <i class="fas fa-user-plus"></i>
                     Nuevo Paciente

@@ -1,6 +1,13 @@
-form {
-  background-color: dodgerblue;
+form,
+mat-form-field {
+  width: 100%;
 }
+mat-spinner {
+  margin: auto;
+}
+/* form {
+ *   background-color: dodgerblue;
+ * } */
 label {
   color: white;
 }
@@ -8,5 +15,5 @@ button {
   background-color: dodgerblue;
 }
 a {
-  color: white;
+  color: black;
 }

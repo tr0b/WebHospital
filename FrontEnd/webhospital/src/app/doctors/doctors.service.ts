@@ -4,9 +4,13 @@ import { Doctor } from "../models/doctor.model";
 import { HttpClient } from "@angular/common/http";
 import { ToastrService } from "ngx-toastr";
 import { environment } from "src/environments/environment";
+import { BehaviorSubject } from "rxjs";
 
 @Injectable({ providedIn: "root" })
 export class DoctorsService {
+  //currentDoctorId && Source
+  doctorIdSource = new BehaviorSubject("-");
+  currentDoctorId = this.doctorIdSource.asObservable();
   //Doctor List
   private doctors: Doctor[] = [];
   //Updated Doctor List after POST
@@ -52,5 +56,8 @@ export class DoctorsService {
       });
 
     this.toastr.success("¡Paciente Actualizado Exitosamente!", "¡Exito!");
+  }
+  changeDoctorId(id: string) {
+    this.doctorIdSource.next(id);
   }
 }
