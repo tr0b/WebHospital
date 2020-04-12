@@ -1,13 +1,14 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { Router, NavigationStart, NavigationEnd } from "@angular/router";
+import { LogInService } from "./login/login.service";
 @Component({
   selector: "app-root",
   templateUrl: "./app.component.html",
   styleUrls: ["./app.component.css"]
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   isOutsider: boolean = false;
-  constructor(private router: Router) {
+  constructor(private router: Router, private logInService: LogInService) {
     this.router.events.subscribe((event: any) => {
       if (event instanceof NavigationEnd) {
         if (event.url === "/login" || event.url === "/register") {
@@ -17,6 +18,9 @@ export class AppComponent {
         }
       }
     });
+  }
+  ngOnInit() {
+    this.logInService.autoAuthUser();
   }
   title = "webhospital";
 }

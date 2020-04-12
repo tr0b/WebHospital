@@ -5,7 +5,11 @@
   <span class="spacer"></span>
   <ul>
     <li *ngIf="userIsAuthenticated">
-      <a mat-button routerLink="/patients" routerLinkActive="mat-accent"
+      <a
+        mat-button
+        routerLink="/patients"
+        routerLinkActive="mat-accent"
+        routerLinkActive="mat-accent"
         >Patients</a
       >
     </li>
@@ -21,7 +25,13 @@
     </li>
 
     <li>
-      <button mat-button [matMenuTriggerFor]="menu">Language</button>
+      <button
+        mat-button
+        [matMenuTriggerFor]="menu"
+        routerLinkActive="mat-accent"
+      >
+        Language
+      </button>
       <mat-menu #menu="matMenu">
         <button mat-menu-item>Español</button>
         <button mat-menu-item>English</button>

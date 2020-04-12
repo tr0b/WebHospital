@@ -9,13 +9,13 @@ router.post("/login", async (req, res) => {
 			req.body.password
 		);
 		const token = await user.generateAuthToken();
-		res.send({ user, token });
+		res.send({ user, token, expiresIn: 3600 });
 	} catch (e) {
 		/* handle error */
 		res.status(400).send(e);
 	}
 });
-router.post("/logout", auth, async (req, res) => {
+router.get("/logout", auth, async (req, res) => {
 	try {
 		req.user.tokens = req.user.tokens.filter(token => {
 			return token.token !== req.token;
