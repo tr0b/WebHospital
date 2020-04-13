@@ -5,6 +5,7 @@ import { HttpClient } from "@angular/common/http";
 import { ToastrService } from "ngx-toastr";
 import { environment } from "src/environments/environment";
 import { BehaviorSubject } from "rxjs";
+import { Router } from "@angular/router";
 
 @Injectable({ providedIn: "root" })
 export class DoctorsService {
@@ -16,7 +17,11 @@ export class DoctorsService {
   //Updated Doctor List after POST
   private doctorsUpdated = new Subject<Doctor[]>();
   //Constructor with HttpClient
-  constructor(private httpClient: HttpClient, private toastr: ToastrService) {}
+  constructor(
+    private httpClient: HttpClient,
+    private toastr: ToastrService,
+    private router: Router
+  ) {}
 
   //Obtain all Doctors
   getDoctors() {
@@ -56,6 +61,19 @@ export class DoctorsService {
       });
 
     this.toastr.success("¡Paciente Actualizado Exitosamente!", "¡Exito!");
+  }
+
+  //"Removes" Doctor
+  removeDoctor(id: any) {
+    const removeDoctorTrigger = { isActive: false };
+    this.httpClient
+      .patch(environment.API_PATH + "doctor/" + id, removeDoctorTrigger)
+      .subscribe(responseData => {
+        console.log(responseData);
+        this.doctorsUpdated.next([...this.doctors]);
+        this.toastr.success("¡Paciente Eliminado Exitosamente!", "¡Exito!");
+        this.router.navigate(["/doctors"]);
+      });
   }
   changeDoctorId(id: string) {
     this.doctorIdSource.next(id);

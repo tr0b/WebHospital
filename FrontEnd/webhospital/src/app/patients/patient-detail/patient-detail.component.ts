@@ -4,7 +4,8 @@ import { PatientsService } from "../patients.service";
 import { Patient } from "../../models/patient.model";
 import { FormGroup, FormControl, Validators } from "@angular/forms";
 import { NgForm } from "@angular/forms";
-
+import { MatDialog, MatDialogConfig } from "@angular/material";
+import { WarningDialogComponent } from "../../warning-dialog/warning-dialog.component";
 //ToastrService
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { ToastrService } from "ngx-toastr";
@@ -24,7 +25,8 @@ export class PatientDetailComponent implements OnInit {
   constructor(
     private router: ActivatedRoute,
     private patientsService: PatientsService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private dialog: MatDialog
   ) {
     this.router.params.subscribe(params => {
       this.id = params["id"];
@@ -64,5 +66,21 @@ export class PatientDetailComponent implements OnInit {
     console.log(freshpatient);
     console.log("Formulario impreso");
     this.patientsService.patchPatient(freshpatient, this.id);
+  }
+  onRemovePatient(status: boolean) {
+    const dialogRef = this.dialog.open(WarningDialogComponent, {
+      maxWidth: "600px",
+      data: {
+        title: "Eliminar Paciente",
+        message: "¿Esta Seguro Que Desea Eliminar el Paciente?"
+      }
+    });
+    dialogRef.afterClosed().subscribe(dialogResult => {
+      if (dialogResult) {
+        //if User pressed Yes
+        this.patientsService.removePatient(this.id);
+        return;
+      }
+    });
   }
 }

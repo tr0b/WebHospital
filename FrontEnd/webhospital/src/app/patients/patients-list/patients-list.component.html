@@ -24,6 +24,8 @@
               <div class="card-tools">
                 <div>
                   <button
+                    mat-raised-button
+                    color="accent"
                     type="button"
                     class="btn  btn-success"
                     [routerLink]="['/addPatient']"
@@ -53,38 +55,40 @@
                     *ngFor="let patient of this.patients"
                     [routerLink]="['/patient', patient._id]"
                   >
-                    <td scope="col">{{ patient.idCard}}</td>
-                    <td scope="col">{{patient._id | slice:-10}}</td>
-                    <td scope="col">
-                      {{ patient.name + " " + patient.last_name }}
-                    </td>
-                    <td scope="col">
-                      {{patient.gender}}
-                    </td>
-                    <td>{{patient.birthDate | slice: 0:10}}</td>
+                    <ng-container *ngIf="patient.isActive">
+                      <td scope="col">{{ patient.idCard}}</td>
+                      <td scope="col">{{patient._id | slice:-10}}</td>
+                      <td scope="col">
+                        {{ patient.name + " " + patient.last_name }}
+                      </td>
+                      <td scope="col">
+                        {{patient.gender}}
+                      </td>
+                      <td>{{patient.birthDate | slice: 0:10}}</td>
 
-                    <td>
-                      <button
-                        type="button"
-                        class="btn btn-primary dropdown-toggle"
-                        (click)="setCurrentPatientId(patient._id)"
-                        style="position:relative;"
-                        [routerLink]="['/histories',patient._id]"
-                      >
-                        History
-                      </button>
-                    </td>
-                    <td>
-                      <button
-                        type="button"
-                        class="btn btn-primary dropdown-toggle"
-                        (click)="setCurrentPatientId(patient._id)"
-                        style="position:relative;"
-                        [routerLink]="['/visits',patient._id]"
-                      >
-                        Visits
-                      </button>
-                    </td>
+                      <td>
+                        <button
+                          type="button"
+                          class="btn btn-primary dropdown-toggle"
+                          (click)="setCurrentPatientId(patient._id)"
+                          style="position:relative;"
+                          [routerLink]="['/histories',patient._id]"
+                        >
+                          History
+                        </button>
+                      </td>
+                      <td>
+                        <button
+                          type="button"
+                          class="btn btn-primary dropdown-toggle"
+                          (click)="setCurrentPatientId(patient._id)"
+                          style="position:relative;"
+                          [routerLink]="['/visits',patient._id]"
+                        >
+                          Visits
+                        </button>
+                      </td>
+                    </ng-container>
                   </tr>
                 </tbody>
               </table>

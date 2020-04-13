@@ -23,7 +23,6 @@ export class DoctorCreateComponent implements OnInit {
       birthDate: form.value.birthDate,
       gender: form.value.gender,
       specialty: form.value.specialty,
-      phone: form.value.phone,
       email: form.value.email,
       address: form.value.address
     };

@@ -45,10 +45,18 @@ import {
   MatCardModule,
   MatButtonModule,
   MatMenuModule,
-  MatToolbarModule
+  MatToolbarModule,
+  MatDialogModule
 } from "@angular/material";
 import { MatIconModule } from "@angular/material";
 import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
+import { WarningDialogComponent } from "./warning-dialog/warning-dialog.component";
+// Import pdfmake-wrapper and the fonts to use
+import { PdfMakeWrapper } from "pdfmake-wrapper";
+import pdfFonts from "pdfmake/build/vfs_fonts"; // fonts provided for pdfmake
+
+// Set the fonts to use
+PdfMakeWrapper.setFonts(pdfFonts);
 @NgModule({
   declarations: [
     AppComponent,
@@ -82,8 +90,10 @@ import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
     DoctorDetailComponent,
     VisitDetailComponent,
     HistoryCreateComponent,
-    HistoryDetailComponent
+    HistoryDetailComponent,
+    WarningDialogComponent
   ],
+  entryComponents: [WarningDialogComponent],
   imports: [
     BrowserModule,
     FormsModule,
@@ -96,6 +106,7 @@ import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
     MatMenuModule,
     MatCardModule,
     MatToolbarModule,
+    MatDialogModule,
     MatProgressSpinnerModule,
     ToastrModule.forRoot()
   ],

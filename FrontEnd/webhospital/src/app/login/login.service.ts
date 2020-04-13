@@ -36,7 +36,6 @@ export class LogInService {
       .subscribe(res => {
         const token = res.token;
         this.token = token;
-        this.toastr.success("¡Usuario Ingresado Exitosamente!", "¡Exito!");
         if (token) {
           const expiresInDuration = res.expiresIn;
           this.setAuthTimer(expiresInDuration);
@@ -62,7 +61,7 @@ export class LogInService {
     if (expiresIn) {
       this.token = authInformation.token;
       this.isAuthenticated = true;
-      this.setAuthTimer(expiresIn);
+      this.setAuthTimer(expiresIn / 1000);
       this.authStatusListener.next(true);
     }
   }
@@ -72,8 +71,8 @@ export class LogInService {
       this.isAuthenticated = false;
       this.authStatusListener.next(false);
       clearTimeout(this.tokenTimer);
-      this.router.navigateByUrl("/");
-      this.toastr.success("¡Ha cerrado la Session!", "¡Exito!");
+      this.clearAuthData();
+      this.router.navigateByUrl("/login");
     });
   }
   private setAuthTimer(duration: number) {
@@ -88,7 +87,7 @@ export class LogInService {
   }
   private clearAuthData() {
     localStorage.removeItem("token");
-    localStorage.remove("expiration");
+    localStorage.removeItem("expiration");
   }
   private getAuthData() {
     const token = localStorage.getItem("token");

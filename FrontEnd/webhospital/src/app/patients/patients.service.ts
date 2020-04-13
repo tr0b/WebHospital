@@ -5,6 +5,7 @@ import { HttpClient } from "@angular/common/http";
 import { ToastrService } from "ngx-toastr";
 import { environment } from "src/environments/environment";
 import { BehaviorSubject } from "rxjs";
+import { Router } from "@angular/router";
 @Injectable({ providedIn: "root" })
 export class PatientsService {
   //Patient List
@@ -14,7 +15,11 @@ export class PatientsService {
   patientIdSource = new BehaviorSubject("-");
   currentPatientId = this.patientIdSource.asObservable();
   //Constructor with HttpClient
-  constructor(private httpClient: HttpClient, private toastr: ToastrService) {}
+  constructor(
+    private httpClient: HttpClient,
+    private toastr: ToastrService,
+    private router: Router
+  ) {}
   //URL string
 
   //Obtain all Patients
@@ -55,6 +60,18 @@ export class PatientsService {
         this.patientsUpdated.next([...this.patients]);
         this.toastr.success("¡Paciente Ingresado Exitosamente!", "¡Exito!");
         console.log("La notificacion se disparo");
+      });
+  }
+  //"Removes" Patient
+  removePatient(id: any) {
+    const removePatientTrigger = { isActive: false };
+    this.httpClient
+      .patch(environment.API_PATH + "patient/" + id, removePatientTrigger)
+      .subscribe(responseData => {
+        console.log(responseData);
+        this.patientsUpdated.next([...this.patients]);
+        this.toastr.success("¡Paciente Eliminado Exitosamente!", "¡Exito!");
+        this.router.navigate(["/patients"]);
       });
   }
   changePatientId(id: string) {
