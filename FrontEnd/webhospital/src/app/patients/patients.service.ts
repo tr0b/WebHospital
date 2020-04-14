@@ -60,7 +60,7 @@ export class PatientsService {
         this.patients.push(patient);
         this.patientsUpdated.next([...this.patients]);
         this.toastr.success("¡Paciente Ingresado Exitosamente!", "¡Exito!");
-        console.log("La notificacion se disparo");
+        this.router.navigate(["/patients"]);
       });
   }
   //"Removes" Patient

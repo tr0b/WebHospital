@@ -80,7 +80,7 @@ export class LogInService {
       this.setAuthTimer(expiresIn / 1000);
       this.authStatusListener.next(true);
     } else {
-      this.logout();
+      this.logOut();
     }
   }
   logOut() {

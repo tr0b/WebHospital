@@ -23,7 +23,7 @@ export class PatientCreateComponent implements OnInit {
       last_name: form.value.last_name,
       birthDate: form.value.birthDate,
       idCard: form.value.idCard,
-      bloodType: form.value.blood,
+      bloodType: form.value.bloodType,
       gender: form.value.gender,
       isActive: form.value.isActive,
       maritalStatus: form.value.maritalStatus,
