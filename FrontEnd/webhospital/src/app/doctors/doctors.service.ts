@@ -70,7 +70,7 @@ export class DoctorsService {
       .subscribe(responseData => {
         console.log(responseData);
         this.doctorsUpdated.next([...this.doctors]);
-        this.toastr.success("¡Paciente Eliminado Exitosamente!", "¡Exito!");
+        this.toastr.success("¡Doctor Eliminado Exitosamente!", "¡Exito!");
         this.router.navigate(["/doctors"]);
       });
   }

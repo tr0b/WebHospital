@@ -42,7 +42,7 @@ export class VisitsService {
       .subscribe(responseData => {
         console.log(responseData);
         this.visitsUpdated.next([...this.visits]);
-        this.toastr.success("¡Visita Actualizado Exitosamente!", "¡Exito!");
+        this.toastr.success("¡Visita Actualizada Exitosamente!", "¡Exito!");
 
         this.router.navigate(["/patients"]);
       });
@@ -58,8 +58,9 @@ export class VisitsService {
         console.log(responseData);
         this.visits.push(visit);
         this.visitsUpdated.next([...this.visits]);
-        this.toastr.success("¡Visita Ingresado Exitosamente!", "¡Exito!");
+        this.toastr.success("¡Visita Ingresada Exitosamente!", "¡Exito!");
         console.log("La notificacion se disparo");
+        this.router.navigate(["/patients"]);
       });
   }
 }

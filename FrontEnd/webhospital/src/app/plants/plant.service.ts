@@ -60,7 +60,7 @@ export class PlantsService {
         this.plants.push(plant);
         this.plantsUpdated.next([...this.plants]);
         this.toastr.success("¡Planta Ingresada Exitosamente!", "¡Exito!");
-        console.log("La notificacion se disparo");
+        this.router.navigate(["/plants"]);
       });
   }
   //"Removes" Plant

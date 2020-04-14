@@ -72,20 +72,8 @@ export class DoctorDetailComponent implements OnInit {
     console.log("Formulario impreso");
     this.doctorsService.patchDoctor(freshdoctor, this.id);
   }
-  onRemoveDoctor(status: boolean) {
-    const dialogRef = this.dialog.open(WarningDialogComponent, {
-      maxWidth: "600px",
-      data: {
-        title: "Eliminar Doctor",
-        message: "¿Esta Seguro Que Desea Eliminar el Doctor?"
-      }
-    });
-    dialogRef.afterClosed().subscribe(dialogResult => {
-      if (dialogResult) {
-        //if User pressed Yes
-        this.doctorsService.removeDoctor(this.id);
-        return;
-      }
-    });
+  onRemoveDoctor() {
+    this.doctorsService.removeDoctor(this.id);
+    return;
   }
 }

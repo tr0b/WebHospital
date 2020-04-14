@@ -55,16 +55,18 @@
             || ID: {{this.visit.doctor._id}} || Specialty:
             {{this.visit.doctor.specialty}}</label
           >
-          <input
-            type="text"
-            class="form-control"
-            id="exampleFormControlInput1"
-            placeholder=""
-            value="{{this.visit.doctor._id}}"
-            ngModel
-            #doctor="ngModel"
-            name="doctor"
-          />
+          <div>
+            <select [(ngModel)]="selectedDoctor" name="selectedDoctor">
+              // value is an object
+              <option
+                *ngFor="let doctor of doctors"
+                (ngModelChange)="onChangeDoctor(doctor)"
+                [ngValue]="doctor._id"
+                >{{doctor.name}} {{doctor.last_name}} Especialidad:
+                {{doctor.specialty}}</option
+              >
+            </select>
+          </div>
         </div>
         <div class="form-group">
           <label for="exampleFormControlInput1"
@@ -72,29 +74,33 @@
             {{this.visit.patient.last_name}} || Id Card:
             {{this.visit.patient.idCard}}</label
           >
-          <input
-            name="patient"
-            type="description"
-            class="form-control"
-            value="{{this.visit.patient._id}}"
-            id="exampleFormControlInput1"
-            placeholder=""
-            ngModel
-            #patient="ngModel"
-          />
+          <div>
+            <select [(ngModel)]="selectedPatient" name="selectedPatient">
+              // value is an object
+              <option
+                *ngFor="let patient of patients"
+                (ngModelChange)="onChangePatient(patient)"
+                [ngValue]="patient._id"
+                >{{patient.name}}</option
+              >
+            </select>
+          </div>
         </div>
         <div class="form-group">
           <label for="exampleFormControlSelect1"
             >Plant: {{this.visit.plant.name}}</label
           >
-          <input
-            id="exampleFormControlSelect1"
-            class="form-control"
-            ngModel
-            #plant="ngModel"
-            value="{{this.visit.plant._id}}"
-            name="plant"
-          />
+          <div>
+            <select [(ngModel)]="selectedPlant" name="selectedPlant">
+              // value is an object
+              <option
+                *ngFor="let plant of plants"
+                (ngModelChange)="onChangePlant(plant)"
+                [ngValue]="plant._id"
+                >{{plant.name}}</option
+              >
+            </select>
+          </div>
         </div>
         <div class="form-group">
           <label for="exampleFormControlSelect1">Description:</label>

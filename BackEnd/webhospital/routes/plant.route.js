@@ -14,6 +14,12 @@ router.post("/plant", auth, async (req, res) => {
 		res.status(400).send(e);
 	}
 });
+//Show a given plant
+router.get("/plant/:id", auth, async (req, res) => {
+	const plant = await Plant.findById(req.params.id);
+	console.log(plant);
+	res.status(200).json(plant);
+});
 //See all Plants
 router.get("/plants", auth, (req, res) => {
 	Plant.find({})

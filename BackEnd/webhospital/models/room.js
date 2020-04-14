@@ -4,7 +4,11 @@ const { Schema } = mongoose;
 
 const RoomSchema = new Schema({
 	name: { type: String, required: true },
-	plant: { required: true, type: mongoose.Schema.Types.ObjectId }
+	plant: {
+		required: true,
+		type: mongoose.Schema.Types.ObjectId,
+		ref: "Plant"
+	}
 });
 RoomSchema.virtual("histories", {
 	ref: "History",

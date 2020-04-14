@@ -1,7 +1,7 @@
 <mat-card>
   <div class="row">
     <div class="col-xs-12">
-      <h3>Vista Internado</h3>
+      <h3>History View</h3>
       <h4>ID: {{this.patientId}}</h4>
       <div class="btn-group">
         <button
@@ -71,14 +71,16 @@
           <label for="exampleFormControlSelect1"
             >Room: {{this.history.room.name}}</label
           >
-          <input
-            id="exampleFormControlSelect1"
-            class="form-control"
-            ngModel
-            #room="ngModel"
-            value="{{this.history.room._id}}"
-            name="room"
-          />
+
+          <select [(ngModel)]="selectedRoom " name="selectedRoom">
+            // value is an object
+            <option
+              *ngFor="let room of rooms"
+              (ngModelChange)="onChangeRoom(room)"
+              [ngValue]="room._id"
+              >{{room.name}}</option
+            >
+          </select>
         </div>
         <div>
           <button

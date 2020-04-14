@@ -79,7 +79,7 @@ export class PatientDetailComponent implements OnInit {
     console.log("Formulario impreso");
     this.patientsService.patchPatient(freshpatient, this.id);
   }
-  onRemovePatient(status: boolean) {
+  onRemovePatient() {
     const dialogRef = this.dialog.open(WarningDialogComponent, {
       maxWidth: "600px",
       data: {

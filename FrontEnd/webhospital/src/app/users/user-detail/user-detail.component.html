@@ -1,1 +1,87 @@
-<p>user-detail works!</p>
+<mat-card>
+  <div class="row">
+    <div class="col-xs-12">
+      <h3>My Profile</h3>
+      <div class="btn-group">
+        <button
+          type="button"
+          class="btn btn-primary dropdown-toggle"
+          style="position:relative;"
+          (click)="patchUser()"
+          *ngIf="!this.edit"
+        >
+          Edit Profile
+        </button>
+      </div>
+      <a routerLink="/changePass">Change Password</a>
+    </div>
+  </div>
+  <div class="card-body">
+    <form #postForm="ngForm" (submit)="onPatchUser(postForm)">
+      <fieldset [disabled]="!this.edit">
+        <label for="exampleFormControlInput1"
+          >User Code: {{this.user._id}}</label
+        >
+        <div>
+          <label for="exampleFormControlInput1">Name: {{this.user.name}}</label>
+          <input
+            type="text"
+            class="form-control"
+            id="exampleFormControlInput1"
+            placeholder=""
+            value=""
+            ngModel
+            #userName="ngModel"
+            name="userName"
+          />
+        </div>
+        <div class="form-group">
+          <label for="exampleFormControlInput1"
+            >Last_Name: {{this.user.last_name}}</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            id="exampleFormControlInput1"
+            placeholder=""
+            value=""
+            ngModel
+            #userLastName="ngModel"
+            name="userLastName"
+          />
+        </div>
+        <div class="form-group">
+          <label for="exampleFormControlInput1"
+            >Email: {{this.user.email}}</label
+          >
+          <input
+            name="email"
+            type="description"
+            class="form-control"
+            value=""
+            id="exampleFormControlInput1"
+            placeholder=""
+            ngModel
+            #email="ngModel"
+          />
+        </div>
+        <div>
+          <button
+            type="submit"
+            class="btn  btn-success"
+            [disabled]="!form.valid"
+          >
+            <i class="nav-icon fas fa-user-edit"></i>
+            Guardar Cambios
+          </button>
+          |
+          <button type="button" class="btn  btn-danger" (click)="patchUser()">
+            <i class="nav-icon fas fa-window-close"></i>
+            Cancelar
+          </button>
+        </div>
+      </fieldset>
+      <div class="btn__box" *ngIf="this.edit"></div>
+    </form>
+  </div>
+</mat-card>

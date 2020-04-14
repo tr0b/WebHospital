@@ -30,7 +30,7 @@ export class WarningDialogComponent implements OnInit {
 
   ngOnInit() {}
 
-  onWarning(): void {
+  onConfirm(): void {
     // Close the dialog, return true
 
     this.dialogRef.close(true);

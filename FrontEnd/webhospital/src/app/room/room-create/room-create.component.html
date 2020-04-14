@@ -1,8 +1,9 @@
 <mat-card>
-  <h2>Create Plant</h2>
+  <h2>Create Room for Plant</h2>
+  <h3>ID: {{this.plantId}}</h3>
   <div class="row">
     <div class="col-xs-12 col-md-6 col-md-offset-3">
-      <form (submit)="onAddPlant(postForm)" #postForm="ngForm">
+      <form (submit)="onAddRoom(postForm)" #postForm="ngForm">
         <div>
           <label>* Name</label>
           <mat-form-field>
@@ -20,17 +21,17 @@
         </div>
         <div>
           <button class="btn btn-primary" type="submit">
-            Create Plant
+            Create Room
           </button>
           <button
             class="btn btn-danger"
             type="button"
-            [routerLink]="['/plants']"
+            [routerLink]="['/rooms']"
           >
             Cancel
           </button>
           |
-          <a href="#">Return to Home</a>
+          <a [routerLink]="['/']">Return to Home</a>
         </div>
       </form>
     </div>

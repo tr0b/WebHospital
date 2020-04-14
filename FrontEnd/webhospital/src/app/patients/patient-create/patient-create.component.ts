@@ -9,18 +9,21 @@ import { PatientsService } from "./../patients.service";
   styleUrls: ["./patient-create.component.css"]
 })
 export class PatientCreateComponent implements OnInit {
+  bloods: String[] = ["A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-"];
+  genders: String[] = ["Male", "Female"];
+  maritalStatuses: String[] = ["Married", "Divorced", "Single", "Widowed"];
   constructor(public patientsService: PatientsService) {}
 
   onAddPatient(form: NgForm) {
-    if (form.invalid) {
-      return;
-    }
+    /* if (form.invalid) {
+     *   return;
+     * } */
     const patient: Patient = {
       name: form.value.name,
       last_name: form.value.last_name,
       birthDate: form.value.birthDate,
       idCard: form.value.idCard,
-      bloodType: form.value.bloodType,
+      bloodType: form.value.blood,
       gender: form.value.gender,
       isActive: form.value.isActive,
       maritalStatus: form.value.maritalStatus,

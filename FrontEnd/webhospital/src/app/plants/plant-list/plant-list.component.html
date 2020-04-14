@@ -1,1 +1,89 @@
-<p>plant-list works!</p>
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <div class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1 class="m-0 text-dark">Plants</h1>
+        </div>
+      </div>
+      <!-- /.row -->
+    </div>
+    <!-- /.container-fluid -->
+  </div>
+  <!-- /.content-header -->
+  <section class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-6">
+          <div class="card">
+            <div class="card-header">
+              <!-- Table-->
+              <h3 class="card-title">List</h3>
+
+              <div class="card-tools">
+                <div>
+                  <button
+                    mat-raised-button
+                    color="accent"
+                    type="button"
+                    class="btn btn-success"
+                    [routerLink]="['/addPlant']"
+                    *ngIf="userIsAuthenticated"
+                  >
+                    <i class="fas fa-user-plus"></i>
+                    Nueva Planta
+                  </button>
+                </div>
+              </div>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body table-responsive p-0">
+              <table class="table table-stripped table-hover">
+                <thead>
+                  <tr>
+                    <th scope="row">ID</th>
+                    <th scope="row">Plant Name</th>
+                    <th scope="row" rowspan=""></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr
+                    *ngFor="let plant of this.plants"
+                    (click)="setCurrentPlantId(plant._id)"
+                    [routerLink]="['/plant', plant._id]"
+                  >
+                    <ng-container>
+                      <td scope="col">
+                        {{ plant._id }}
+                      </td>
+                      <td scope="col">
+                        {{ plant.name }}
+                      </td>
+
+                      <td>
+                        <button
+                          mat-raised-button
+                          color="primary"
+                          type="button"
+                          class="btn btn-primary dropdown-toggle"
+                          (click)="setCurrentPlantId(plant._id)"
+                          style="position:relative;"
+                          [routerLink]="['/rooms',plant._id]"
+                        >
+                          Rooms
+                        </button>
+                      </td>
+                    </ng-container>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <!-- /.card-body -->
+          </div>
+          <!-- /.card -->
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

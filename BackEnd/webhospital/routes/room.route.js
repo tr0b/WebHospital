@@ -26,6 +26,14 @@ router.get("/rooms", auth, (req, res) => {
 			res.status(400).send(e);
 		});
 });
+//Show a given room
+router.get("/room/:id", auth, async (req, res) => {
+	const room = await Room.findById(req.params.id).populate({
+		path: "plant"
+	});
+	console.log(room);
+	res.status(200).json(room);
+});
 
 //Modify Room Details
 router.patch("/room/:id", auth, async (req, res) => {

@@ -11,11 +11,11 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { ToastrService } from "ngx-toastr";
 
 @Component({
-  selector: "app-user",
-  templateUrl: "./user-detail.component.html",
-  styleUrls: ["./user-detail.component.css"]
+  selector: "app-password",
+  templateUrl: "./user-password.component.html",
+  styleUrls: ["./user-password.component.css"]
 })
-export class UserDetailComponent implements OnInit {
+export class UserPasswordComponent implements OnInit {
   user: any;
   edit: boolean = false;
   selectInfo: any[] = [];
@@ -41,22 +41,20 @@ export class UserDetailComponent implements OnInit {
   }
 
   //User gets updated with PATCH method
-  patchUser() {
-    this.edit = !this.edit;
-  }
 
   onPatchUser(form: NgForm) {
-    if (form.invalid) {
+    const pass1 = form.value.newPass;
+    const pass2 = form.value.newPass2;
+    if (form.invalid || pass1 !== pass2) {
+      this.toastr.error("Ocurrio un error", "Error");
       return;
     }
 
-    const freshuser: User = {
-      name: form.value.userName,
-      last_name: form.value.userLastName,
-      email: form.value.email
+    const newPassData: any = {
+      password: pass1
     };
 
-    this.usersService.patchProfile(freshuser);
+    this.usersService.patchPassword(newPassData);
   }
   onRemoveUser(status: boolean) {
     const dialogRef = this.dialog.open(WarningDialogComponent, {

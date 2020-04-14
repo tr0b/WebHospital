@@ -9,6 +9,9 @@ import { PatientsService } from "../../patients/patients.service";
 import { PdfMakeWrapper, Txt, Table, Cell } from "pdfmake-wrapper";
 import { Doctor } from "../../models/doctor.model";
 import { DoctorsService } from "../../doctors/doctors.service";
+import { Plant } from "../../models/plant.model";
+import { PlantsService } from "../../plants/plant.service";
+import { Subscription } from "rxjs";
 
 //ToastrService
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
@@ -20,19 +23,28 @@ import { ToastrService } from "ngx-toastr";
   styleUrls: ["./visit-detail.component.css"]
 })
 export class VisitDetailComponent implements OnInit {
-  visit: Visit;
+  visit: any;
   edit: boolean = false;
   selectInfo: any[] = [];
+  selectedPatient: string;
+  selectedDoctor: string;
+  selectedPlant: string;
+  plants: Plant[];
+  doctors: Doctor[];
+  patients: Patient[];
+  plantSub: Subscription;
+  doctorSub: Subscription;
+  patientSub: Subscription;
   selectVisit: string;
   id: string;
   patientId: string;
   patient: any;
-
   constructor(
     private router: ActivatedRoute,
     private visitsService: VisitsService,
     public patientsService: PatientsService,
     public doctorsService: DoctorsService,
+    public plantsService: PlantsService,
     private toastr: ToastrService
   ) {
     this.router.params.subscribe(params => {
@@ -48,6 +60,24 @@ export class VisitDetailComponent implements OnInit {
     this.patientsService
       .getPatient(this.patientId)
       .subscribe(patient => (this.patient = patient));
+    this.patientsService.getPatients();
+    this.patientSub = this.patientsService
+      .getPatientUpdateListener()
+      .subscribe((patients: Patient[]) => {
+        this.patients = patients;
+      });
+    this.plantsService.getPlants();
+    this.plantSub = this.plantsService
+      .getPlantUpdateListener()
+      .subscribe((plants: Plant[]) => {
+        this.plants = plants;
+      });
+    this.doctorsService.getDoctors();
+    this.doctorSub = this.doctorsService
+      .getDoctorUpdateListener()
+      .subscribe((doctors: Doctor[]) => {
+        this.doctors = doctors;
+      });
   }
 
   getVisit(id: string) {
@@ -70,9 +100,9 @@ export class VisitDetailComponent implements OnInit {
 
     const freshvisit: Visit = {
       date: form.value.date,
-      doctor: form.value.doctor,
-      patient: form.value.patient,
-      plant: form.value.plant,
+      doctor: this.selectedDoctor,
+      patient: this.selectedPatient,
+      plant: this.selectedPlant,
       description: form.value.description
     };
 

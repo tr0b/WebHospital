@@ -24,7 +24,7 @@ import { VisitEditComponent } from "./visits/visits-list/visit-edit/visit-edit.c
 import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { Routes } from "@angular/router";
 import { LogoComponent } from "./logo/logo.component";
-import { FormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { PatientCreateComponent } from "./patients/patient-create/patient-create.component";
 import { UsersComponent } from "./users/users.component";
 import { UserDetailComponent } from "./users/user-detail/user-detail.component";
@@ -42,6 +42,7 @@ import { HistoryDetailComponent } from "./histories/history-detail/history-detai
 import { AuthInterceptor } from "./auth-interceptor";
 import {
   MatInputModule,
+  MatAutocompleteModule,
   MatCardModule,
   MatButtonModule,
   MatMenuModule,
@@ -57,10 +58,15 @@ import { WarningDialogComponent } from "./warning-dialog/warning-dialog.componen
 // Import pdfmake-wrapper and the fonts to use
 import { PdfMakeWrapper } from "pdfmake-wrapper";
 import pdfFonts from "pdfmake/build/vfs_fonts";
-import { PlantsComponent } from './plants/plants.component';
-import { PlantListComponent } from './plants/plant-list/plant-list.component';
-import { PlantCreateComponent } from './plants/plant-create/plant-create.component';
-import { PlantDetailComponent } from './plants/plant-detail/plant-detail.component'; // fonts provided for pdfmake
+import { PlantsComponent } from "./plants/plants.component";
+import { PlantsListComponent } from "./plants/plant-list/plant-list.component";
+import { PlantCreateComponent } from "./plants/plant-create/plant-create.component";
+import { PlantDetailComponent } from "./plants/plant-detail/plant-detail.component";
+import { RoomComponent } from "./room/room.component";
+import { RoomCreateComponent } from "./room/room-create/room-create.component";
+import { RoomsListComponent } from "./room/room-list/room-list.component";
+import { RoomDetailComponent } from "./room/room-detail/room-detail.component";
+import { UserPasswordComponent } from "./users/user-password/user-password.component"; // fonts provided for pdfmake
 
 // Set the fonts to use
 PdfMakeWrapper.setFonts(pdfFonts);
@@ -100,9 +106,14 @@ PdfMakeWrapper.setFonts(pdfFonts);
     HistoryDetailComponent,
     WarningDialogComponent,
     PlantsComponent,
-    PlantListComponent,
+    PlantsListComponent,
     PlantCreateComponent,
-    PlantDetailComponent
+    PlantDetailComponent,
+    RoomComponent,
+    RoomCreateComponent,
+    RoomsListComponent,
+    RoomDetailComponent,
+    UserPasswordComponent
   ],
   entryComponents: [WarningDialogComponent],
   imports: [
@@ -118,7 +129,9 @@ PdfMakeWrapper.setFonts(pdfFonts);
     MatButtonModule,
     MatMenuModule,
     MatCardModule,
+    MatAutocompleteModule,
     MatToolbarModule,
+    ReactiveFormsModule,
     MatDialogModule,
     MatDatepickerModule,
     MatProgressSpinnerModule,

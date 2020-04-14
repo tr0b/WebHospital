@@ -17,6 +17,12 @@
         >Patients</a
       >
     </li>
+
+    <li *ngIf="userIsAuthenticated">
+      <a mat-button routerLink="/plants" routerLinkActive="mat-accent"
+        >Plants</a
+      >
+    </li>
     <li *ngIf="userIsAuthenticated">
       <a mat-button routerLink="/doctors" routerLinkActive="mat-accent"
         >Doctors</a

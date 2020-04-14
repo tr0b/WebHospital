@@ -11,13 +11,19 @@ import { PatientsService } from "../../patients/patients.service";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { ToastrService } from "ngx-toastr";
 
+import { RoomsService } from "../../room/room.service";
+import { Room } from "../../models/room.model";
+import { Subscription } from "rxjs";
 @Component({
   selector: "app-history",
   templateUrl: "./history-detail.component.html",
   styleUrls: ["./history-detail.component.css"]
 })
 export class HistoryDetailComponent implements OnInit {
+  room: any;
   history: History;
+  rooms: Room[] = [];
+  private roomSub: Subscription;
   edit: boolean = false;
   selectInfo: any[] = [];
   selectHistory: string;
@@ -29,6 +35,7 @@ export class HistoryDetailComponent implements OnInit {
     private router: ActivatedRoute,
     private historiesService: HistoriesService,
     public patientsService: PatientsService,
+    public roomService: RoomsService,
     private toastr: ToastrService
   ) {
     this.router.params.subscribe(params => {
@@ -41,6 +48,12 @@ export class HistoryDetailComponent implements OnInit {
     this.patientsService.currentPatientId.subscribe(
       patientId => (this.patientId = patientId)
     );
+    this.roomService.getAllRooms();
+    this.roomSub = this.roomService
+      .getRoomUpdateListener()
+      .subscribe((rooms: Room[]) => {
+        this.rooms = rooms;
+      });
   }
 
   getHistory(id: string) {
@@ -65,12 +78,16 @@ export class HistoryDetailComponent implements OnInit {
       dateOut: form.value.dateOut,
       bedId: form.value.bedId,
       patient: this.patientId,
-      room: form.value.room
+      room: this.room._id
     };
 
     console.log("Imprimiendo formulario...");
     console.log(freshhistory);
     console.log("Formulario impreso");
     this.historiesService.patchHistory(freshhistory, this.id);
+  }
+  onChangeRoom(room: any) {
+    console.log(room);
+    this.room = room;
   }
 }

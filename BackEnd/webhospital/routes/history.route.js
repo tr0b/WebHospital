@@ -16,7 +16,7 @@ router.post("/history", auth, async (req, res) => {
 	}
 });
 router.get("/histories", auth, (req, res) => {
-	//See all Historys
+	//See all Histories
 	History.find({})
 		.then(histories => {
 			res.status(200).send(histories);

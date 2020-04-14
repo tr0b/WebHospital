@@ -3,28 +3,33 @@
 <div class="row">
   <div class="col-xs-12 col-md-6 col-md-offset-3">
     <form (submit)="onAddVisit(postForm)" #postForm="ngForm">
-      <label>* Doctor</label>
-      <input
-        id="doctor"
-        ngModel
-        #doctor="ngModel"
-        name="doctor"
-        type="text"
-        class="form-control"
-        required
-      />
+      <div>
+        <label>* Doctor</label>
+        <select [(ngModel)]="selectedDoctor" name="selectedDoctor">
+          // value is an object
+          <option
+            *ngFor="let doctor of doctors"
+            (ngModelChange)="onChangeDoctor(doctor)"
+            [ngValue]="doctor._id"
+            >{{doctor.name}} {{doctor.last_name}} Especialidad:
+            {{doctor.specialty}}</option
+          >
+        </select>
+      </div>
       <!-- </div>
          - <div class="form-group"> -->
-      <label>* Plant</label>
-      <input
-        type="text"
-        id="plant"
-        ngModel
-        #plant="ngModel"
-        class="form-control"
-        name="plant"
-        required
-      />
+      <div>
+        <label>* Plant</label>
+        <select [(ngModel)]="selectedPlant" name="selectedPlant">
+          // value is an object
+          <option
+            *ngFor="let plant of plants"
+            (ngModelChange)="onChangePlant(plant)"
+            [ngValue]="plant._id"
+            >{{plant.name}}</option
+          >
+        </select>
+      </div>
       <div class="md-form">
         <label for="form7">* Description</label>
         <textarea

@@ -16,16 +16,54 @@ import { RegisterComponent } from "./register/register.component";
 import { HistoryCreateComponent } from "./histories/histories-create/histories-create.component";
 import { HistoryDetailComponent } from "./histories/history-detail/history-detail.component";
 import { AuthGuard } from "./auth.guard";
+import { PlantsComponent } from "./plants/plants.component";
+import { PlantDetailComponent } from "./plants/plant-detail/plant-detail.component";
+import { PlantCreateComponent } from "./plants/plant-create/plant-create.component";
+import { RoomComponent } from "./room/room.component";
+import { RoomCreateComponent } from "./room/room-create/room-create.component";
+import { RoomDetailComponent } from "./room/room-detail/room-detail.component";
+import { UsersComponent } from "./users/users.component";
+import { UserPasswordComponent } from "./users/user-password/user-password.component";
 const routes: Routes = [
   { path: "", component: HomeComponent, canActivate: [AuthGuard] },
+  {
+    path: "changePass",
+    component: UserPasswordComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: "profile",
+    component: UsersComponent,
+    canActivate: [AuthGuard]
+  },
   {
     path: "patients",
     component: PatientsComponent,
     canActivate: [AuthGuard]
   },
   {
+    path: "rooms/:id",
+    component: RoomComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: "plants",
+    component: PlantsComponent,
+    canActivate: [AuthGuard]
+  },
+  {
     path: "patient/:id",
     component: PatientDetailComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: "room/:id",
+    component: RoomDetailComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: "plant/:id",
+    component: PlantDetailComponent,
     canActivate: [AuthGuard]
   },
   {
@@ -51,8 +89,18 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
+    path: "addPlant",
+    component: PlantCreateComponent,
+    canActivate: [AuthGuard]
+  },
+  {
     path: "addPatient",
     component: PatientCreateComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: "addRoom",
+    component: RoomCreateComponent,
     canActivate: [AuthGuard]
   },
   {
