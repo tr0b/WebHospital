@@ -16,7 +16,7 @@ router.post("/login", async (req, res) => {
 		res.status(200).json({
 			user,
 			token,
-			expiresIn: 3600,
+			expiresIn: 21600,
 			userName: decoded.name,
 			userEmail: decoded.email,
 			userId: decoded._id

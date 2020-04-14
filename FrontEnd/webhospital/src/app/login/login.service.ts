@@ -79,6 +79,8 @@ export class LogInService {
       this.userEmail = authInformation.userEmail;
       this.setAuthTimer(expiresIn / 1000);
       this.authStatusListener.next(true);
+    } else {
+      this.logout();
     }
   }
   logOut() {
