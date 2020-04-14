@@ -11,6 +11,7 @@ export class AppComponent implements OnInit {
   constructor(private router: Router, private logInService: LogInService) {
     this.router.events.subscribe((event: any) => {
       if (event instanceof NavigationEnd) {
+        //Mechanism to Hide header bar in case user is in login or register page
         if (event.url === "/login" || event.url === "/register") {
           this.isOutsider = true;
         } else {

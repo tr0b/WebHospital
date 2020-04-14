@@ -1,0 +1,7 @@
+.mat-raised-button.mat-accent {
+  background-color: #57b85a;
+}
+primary,
+.mat-raised-button.mat-primary {
+  background-color: #1e90ff;
+}

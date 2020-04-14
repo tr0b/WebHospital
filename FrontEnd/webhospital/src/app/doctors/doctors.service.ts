@@ -47,8 +47,7 @@ export class DoctorsService {
         console.log(responseData);
         this.doctors.push(doctor);
         this.doctorsUpdated.next([...this.doctors]);
-        this.toastr.success("¡Paciente Ingresado Exitosamente!", "¡Exito!");
-        console.log("La notificacion se disparo");
+        this.toastr.success("¡Doctor Ingresado Exitosamente!", "¡Exito!");
       });
   }
   patchDoctor(doctor: any, id) {
@@ -58,9 +57,9 @@ export class DoctorsService {
       .subscribe(responseData => {
         console.log(responseData);
         this.doctorsUpdated.next([...this.doctors]);
+        this.toastr.success("¡Doctor Actualizado Exitosamente!", "¡Exito!");
+        this.router.navigate(["/doctors"]);
       });
-
-    this.toastr.success("¡Paciente Actualizado Exitosamente!", "¡Exito!");
   }
 
   //"Removes" Doctor

@@ -14,9 +14,9 @@ router.post("/visit", auth, async (req, res) => {
 		res.status(400).send(e);
 	}
 });
-router.get("/visits", auth, (req, res) => {
+router.get("/visits", auth, async (req, res) => {
 	//See all Visits
-	Visit.find({})
+	Visit.find()
 		.then(visits => {
 			res.status(200).send(visits);
 		})
@@ -27,15 +27,33 @@ router.get("/visits", auth, (req, res) => {
 
 //Show a given visit
 router.get("/visit/:id", auth, async (req, res) => {
-	const visit = await Visit.findById(req.params.id);
-	console.log(visit);
-	res.status(200).json(visit);
+	try {
+		const visit = await Visit.findById(req.params.id)
+			.populate({
+				path: "doctor"
+			})
+			.populate({ path: "patient" })
+			.populate({ path: "plant" });
+		res.status(200).json(visit);
+	} catch (e) {
+		/* handle error */
+		res.status(500).json(e);
+	}
 });
 router.get("/visits/:id", auth, async (req, res) => {
 	//See all Visits of specific patient
 	try {
 		const patient = await Patient.findById(req.params.id);
-		await patient.populate("visits").execPopulate();
+		await patient
+			.populate({
+				path: "visits",
+				populate: [
+					{ path: "doctor" },
+					{ path: "plant" },
+					{ path: "patient" }
+				]
+			})
+			.execPopulate();
 		res.status(200).send(patient.visits);
 	} catch (e) {
 		/* handle error */

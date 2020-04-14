@@ -27,7 +27,6 @@ export class VisitDetailComponent implements OnInit {
   id: string;
   patientId: string;
   patient: any;
-  private doctor: Doctor;
 
   constructor(
     private router: ActivatedRoute,
@@ -52,8 +51,9 @@ export class VisitDetailComponent implements OnInit {
   }
 
   getVisit(id: string) {
-    this.visitsService.getVisit(id).subscribe((data: Visit) => {
-      this.visit = data;
+    this.visitsService.getVisit(id).subscribe((res: any) => {
+      console.log(res);
+      this.visit = res;
       console.log(this.visit);
     });
   }
@@ -95,16 +95,27 @@ export class VisitDetailComponent implements OnInit {
           "Fecha: " +
           this.visit.date +
           " \n\n" +
-          "Paciente: " +
-          this.patient.name +
+          "Planta: " +
+          this.visit.plant.name +
+          "\n\n" +
+          "Doctor que realizo visita medica: " +
+          this.visit.doctor.name +
           " " +
-          this.patient.last_name +
+          this.visit.doctor.last_name +
+          "\n\n" +
+          "Especialidad Doctor: " +
+          this.visit.doctor.specialty +
+          "\n\n" +
+          "Paciente: " +
+          this.visit.patient.name +
+          " " +
+          this.visit.patient.last_name +
           " \n\n ID: [ " +
-          this.patient.idCard +
+          this.visit.patient.idCard +
           " ] " +
           "\n\n" +
           "Numero Seguro: " +
-          this.patient._id +
+          this.visit.patient._id +
           "\n\n" +
           "Diagnostico: " +
           this.visit.description +

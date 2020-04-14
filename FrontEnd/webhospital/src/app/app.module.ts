@@ -46,14 +46,21 @@ import {
   MatButtonModule,
   MatMenuModule,
   MatToolbarModule,
-  MatDialogModule
+  MatDatepickerModule,
+  MatDialogModule,
+  MatSelectModule,
+  MatNativeDateModule
 } from "@angular/material";
 import { MatIconModule } from "@angular/material";
 import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 import { WarningDialogComponent } from "./warning-dialog/warning-dialog.component";
 // Import pdfmake-wrapper and the fonts to use
 import { PdfMakeWrapper } from "pdfmake-wrapper";
-import pdfFonts from "pdfmake/build/vfs_fonts"; // fonts provided for pdfmake
+import pdfFonts from "pdfmake/build/vfs_fonts";
+import { PlantsComponent } from './plants/plants.component';
+import { PlantListComponent } from './plants/plant-list/plant-list.component';
+import { PlantCreateComponent } from './plants/plant-create/plant-create.component';
+import { PlantDetailComponent } from './plants/plant-detail/plant-detail.component'; // fonts provided for pdfmake
 
 // Set the fonts to use
 PdfMakeWrapper.setFonts(pdfFonts);
@@ -91,13 +98,19 @@ PdfMakeWrapper.setFonts(pdfFonts);
     VisitDetailComponent,
     HistoryCreateComponent,
     HistoryDetailComponent,
-    WarningDialogComponent
+    WarningDialogComponent,
+    PlantsComponent,
+    PlantListComponent,
+    PlantCreateComponent,
+    PlantDetailComponent
   ],
   entryComponents: [WarningDialogComponent],
   imports: [
     BrowserModule,
     FormsModule,
+    MatSelectModule,
     AppRoutingModule,
+    MatNativeDateModule,
     BrowserAnimationsModule,
     HttpClientModule,
     MatInputModule,
@@ -107,6 +120,7 @@ PdfMakeWrapper.setFonts(pdfFonts);
     MatCardModule,
     MatToolbarModule,
     MatDialogModule,
+    MatDatepickerModule,
     MatProgressSpinnerModule,
     ToastrModule.forRoot()
   ],

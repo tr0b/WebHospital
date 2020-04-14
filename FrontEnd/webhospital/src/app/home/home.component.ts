@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { LogInService } from "../login/login.service";
 
 @Component({
   selector: "app-home",
@@ -6,7 +7,10 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: ["./home.component.css"]
 })
 export class HomeComponent implements OnInit {
-  constructor() {}
+  userName: string;
+  constructor(private logInService: LogInService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.userName = this.logInService.getUserName();
+  }
 }

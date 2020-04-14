@@ -1,3 +1,7 @@
+.mat-toolbar.mat-primary {
+  background: dodgerblue;
+  color: #fff;
+}
 ul {
   list-style: none;
   padding: 0;
@@ -17,3 +21,7 @@ ul {
   flex: 1 1 auto;
 }
 
+.mat-toolbar h1 {
+  font: 500 30px/33px Roboto, "Helvetica Neue", sans-serif;
+  margin: 0;
+}

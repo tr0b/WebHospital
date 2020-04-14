@@ -1,160 +1,174 @@
-<div class="row">
-  <div class="col-xs-12">
-    <h3>Vista Paciente</h3>
-    <div>
-      <button
-        type="button"
-        class="btn btn-primary dropdown-toggle"
-        style="position:relative;"
-        (click)="patchPatient()"
-        *ngIf="!this.edit"
-      >
-        Manage
-      </button>
-      ||
-      <button
-        type="button"
-        class="btn btn-danger dropdown-toggle"
-        style="position:relative;"
-        (click)="onRemovePatient()"
-        *ngIf="!this.edit"
-      >
-        Delete
-      </button>
+<mat-card>
+  <div class="row">
+    <div class="col-xs-12">
+      <h3>Vista Paciente</h3>
+      <div>
+        <button
+          type="button"
+          class="btn btn-primary dropdown-toggle"
+          style="position:relative;"
+          (click)="patchPatient()"
+          *ngIf="!this.edit"
+        >
+          Manage
+        </button>
+        ||
+        <button
+          type="button"
+          class="btn btn-danger dropdown-toggle"
+          style="position:relative;"
+          (click)="onRemovePatient()"
+          *ngIf="!this.edit"
+        >
+          Delete
+        </button>
+      </div>
     </div>
   </div>
-</div>
-<div class="card-body">
-  <form #postForm="ngForm" (submit)="onPatchPatient(postForm)">
-    <fieldset [disabled]="!this.edit">
-      <label for="exampleFormControlInput1"
-        >Insurance Code: {{this.patient._id}} | Name:
-        {{this.patient.name}}</label
-      >
-      <div class="form-group">
-        <label for="exampleFormControlInput1">ID Card: </label>
-        <input
-          type="text"
-          class="form-control"
-          name="idCard"
-          placeholder=""
-          value="{{this.patient.idCard}}"
-          ngModel
-          #idCard="ngModel"
-        />
-      </div>
-      <div class="form-group">
-        <label for="exampleFormControlInput1">Name:</label>
-        <input
-          type="text"
-          class="form-control"
-          id="exampleFormControlInput1"
-          placeholder=""
-          value="{{this.patient.name}}"
-          ngModel
-          #name="ngModel"
-          name="name"
-        />
-      </div>
-      <div class="form-group">
-        <label for="exampleFormControlInput1">Last Name:</label>
-        <input
-          name="last_name"
-          type="email"
-          class="form-control"
-          value="{{this.patient.last_name}}"
-          id="exampleFormControlInput1"
-          placeholder=""
-          ngModel
-          #last_name="ngModel"
-        />
-      </div>
-      <div class="form-group">
-        <label for="exampleFormControlInput1">Birth Date:</label>
-        <input
-          name="birthDate"
-          type="text"
-          class="form-control"
-          id="exampleFormControlInput1"
-          value="{{this.patient.birthDate}}"
-          placeholder=""
-          ngModel
-          #birthDate="ngModel"
-          name="birthDate"
-        />
-      </div>
-      <div class="form-group">
-        <label for="exampleFormControlSelect1">Blood Type:</label>
-        <select
-          name="bloodType"
-          class="form-control"
-          id="exampleFormControlSelect1"
-          value="{{this.patient.bloodType}}"
-          ngModel
-          #bloodType="ngModel"
+  <div class="card-body">
+    <form #postForm="ngForm" (submit)="onPatchPatient(postForm)">
+      <fieldset [disabled]="!this.edit">
+        <label for="exampleFormControlInput1"
+          >Insurance Code: {{this.patient._id}} | Name:
+          {{this.patient.name}}</label
         >
-          <option value="A+">A+</option>
-          <option value="A-">A-</option>
-          <option value="B+">B+</option>
-          <option value="B-">B-</option>
-          <option value="AB+">AB+</option>
-          <option value="AB-">AB-</option>
-          <option value="O+">O+</option>
-          <option value="O-">O-</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label for="exampleFormControlSelect1">Gender:</label>
-        <select
-          name="gender"
-          class="form-control"
-          id="exampleFormControlSelect1"
-          ngModel
-          #gender="ngModel"
-          value="{{this.patient.gender}}"
-        >
-          <option value="Male">Male</option>
-          <option value="Female">Female</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label for="exampleFormControlSelect1">Marital Status:</label>
-        <select
-          name="maritalStatus"
-          class="form-control"
-          id="exampleFormControlSelect1"
-          ngModel
-          #maritalStatus="ngModel"
-          value="{{this.patient.maritalStatus}}"
-        >
-          <option value="Single">Single</option>
-          <option value="Divorced">Divorced</option>
-          <option value="Married">Married</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label for="exampleFormControlSelect1">Email:</label>
-        <input
-          id="exampleFormControlSelect1"
-          ngModel
-          #email="ngModel"
-          value="{{this.patient.email}}"
-          class="form-control"
-          name="email"
-        />
-      </div>
-      <div>
-        <button type="submit" class="btn  btn-success">
-          <i class="nav-icon fas fa-user-edit"></i>
-          Guardar Cambios
-        </button>
-        |
-        <button type="button" class="btn  btn-danger" (click)="patchPatient()">
-          <i class="nav-icon fas fa-window-close"></i>
-          Cancelar
-        </button>
-      </div>
-    </fieldset>
-    <div class="btn__box" *ngIf="this.edit"></div>
-  </form>
-</div>
+        <div class="form-group">
+          <label for="exampleFormControlInput1">ID Card: </label>
+          <input
+            type="text"
+            class="form-control"
+            name="idCard"
+            placeholder=""
+            value="{{this.patient.idCard}}"
+            ngModel
+            #idCard="ngModel"
+          />
+        </div>
+        <div class="form-group">
+          <label for="exampleFormControlInput1">Name:</label>
+          <input
+            type="text"
+            class="form-control"
+            id="exampleFormControlInput1"
+            placeholder=""
+            value="{{this.patient.name}}"
+            ngModel
+            #name="ngModel"
+            name="name"
+          />
+        </div>
+        <div class="form-group">
+          <label for="exampleFormControlInput1">Last Name:</label>
+          <input
+            name="last_name"
+            type="email"
+            class="form-control"
+            value="{{this.patient.last_name}}"
+            id="exampleFormControlInput1"
+            placeholder=""
+            ngModel
+            #last_name="ngModel"
+          />
+        </div>
+        <div class="form-group">
+          <mat-form-field>
+            <label for="exampleFormControlInput1"
+              >Birth Date: {{this.patient.birthDate}}</label
+            >
+
+            <input
+              matInput
+              [matDatepicker]="pickerIn"
+              name="birthDate"
+              class="form-control"
+              required
+              ngModel
+              #birthDate="ngModel"
+            />
+            <mat-datepicker-toggle
+              matSuffix
+              [for]="pickerIn"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #pickerIn></mat-datepicker>
+          </mat-form-field>
+        </div>
+        <div class="form-group">
+          <label for="exampleFormControlSelect1">Blood Type:</label>
+          <select
+            name="bloodType"
+            class="form-control"
+            id="exampleFormControlSelect1"
+            value="{{this.patient.bloodType}}"
+            ngModel
+            #bloodType="ngModel"
+          >
+            <option value="A+">A+</option>
+            <option value="A-">A-</option>
+            <option value="B+">B+</option>
+            <option value="B-">B-</option>
+            <option value="AB+">AB+</option>
+            <option value="AB-">AB-</option>
+            <option value="O+">O+</option>
+            <option value="O-">O-</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="exampleFormControlSelect1">Gender:</label>
+          <select
+            name="gender"
+            class="form-control"
+            id="exampleFormControlSelect1"
+            ngModel
+            #gender="ngModel"
+            value="{{this.patient.gender}}"
+          >
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="exampleFormControlSelect1">Marital Status:</label>
+          <select
+            name="maritalStatus"
+            class="form-control"
+            id="exampleFormControlSelect1"
+            ngModel
+            #maritalStatus="ngModel"
+            value="{{this.patient.maritalStatus}}"
+          >
+            <option value="Single">Single</option>
+            <option value="Divorced">Divorced</option>
+            <option value="Married">Married</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="exampleFormControlSelect1">Email:</label>
+          <input
+            id="exampleFormControlSelect1"
+            ngModel
+            #emal="ngModel"
+            value="{{this.patient.email}}"
+            class="form-control"
+            name="email"
+          />
+        </div>
+        <div>
+          <button type="submit" class="btn  btn-success">
+            <i class="nav-icon fas fa-user-edit"></i>
+            Guardar Cambios
+          </button>
+          |
+          <button
+            type="button"
+            class="btn  btn-danger"
+            (click)="patchPatient()"
+          >
+            <i class="nav-icon fas fa-window-close"></i>
+            Cancelar
+          </button>
+        </div>
+      </fieldset>
+      <div class="btn__box" *ngIf="this.edit"></div>
+    </form>
+  </div>
+</mat-card>

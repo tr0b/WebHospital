@@ -42,6 +42,13 @@
                   <tr>
                     <th scope="row">ID</th>
                     <th scope="row">Doctor Code</th>
+                    <th scope="row">Doctor Full Name</th>
+                    <th scope="row">Doctor Specialty</th>
+                    <th scope="row">Patient Full Name</th>
+                    <th scope="row">Patient Id Card</th>
+                    <th scope="row">Patient Full Name</th>
+                    <th scope="row">Plant ID</th>
+                    <th scope="row">Plant</th>
                     <th scope="row">Fecha</th>
                   </tr>
                 </thead>
@@ -51,8 +58,19 @@
                     [routerLink]="['/visit', visit._id]"
                   >
                     <td scope="col">{{ visit._id | slice: -5 }}</td>
-                    <td scope="col">{{ visit.doctor}}</td>
-                    <td scope="col">{{ visit.date}}</td>
+                    <td scope="col">{{ visit.doctor._id}}</td>
+                    <td scope="col">
+                      {{ visit.doctor.name}} {{visit.doctor.last_name}}
+                    </td>
+                    <td scope="col">{{ visit.doctor.specialty}}</td>
+                    <td scope="col">
+                      {{ visit.patient.name }} {{visit.patient.last_name}}
+                    </td>
+                    <td>{{visit.patient.idCard}}</td>
+                    <td>{{visit.patient._id}}</td>
+                    <td>{{visit.plant._id}}</td>
+                    <td>{{visit.plant.name}}</td>
+                    <td>{{visit.date}}</td>
                   </tr>
                 </tbody>
               </table>

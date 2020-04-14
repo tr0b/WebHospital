@@ -4,6 +4,7 @@ import { History } from "../models/history.model";
 import { HttpClient } from "@angular/common/http";
 import { ToastrService } from "ngx-toastr";
 import { environment } from "src/environments/environment";
+import { Router } from "@angular/router";
 @Injectable({ providedIn: "root" })
 export class HistoriesService {
   //History List
@@ -11,7 +12,7 @@ export class HistoriesService {
   //Updated History List after POST
   private historiesUpdated = new Subject<History[]>();
   //Constructor with HttpClient
-  constructor(private httpClient: HttpClient, private toastr: ToastrService) {}
+  constructor(private httpClient: HttpClient, private toastr: ToastrService, private router: Router) {}
   //URL string
 
   //Obtain all Histories
@@ -37,6 +38,8 @@ export class HistoriesService {
         console.log(responseData);
         this.historiesUpdated.next([...this.histories]);
         this.toastr.success("¡Historia Actualizado Exitosamente!", "¡Exito!");
+
+        this.router.navigate(["/patients"]);
       });
   }
   getHistoryUpdateListener() {

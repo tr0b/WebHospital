@@ -29,7 +29,14 @@ router.get("/histories/:id", auth, async (req, res) => {
 	//See all Histories of specific patient
 	try {
 		const patient = await Patient.findById(req.params.id);
-		await patient.populate("histories").execPopulate();
+		await patient
+			.populate({
+				path: "histories",
+				populate: {
+					path: "room"
+				}
+			})
+			.execPopulate();
 		res.status(200).send(patient.histories);
 	} catch (e) {
 		res.status(400).send(e);
@@ -65,12 +72,14 @@ router.patch("/history/:id", auth, async (req, res) => {
 });
 //Show a given history
 router.get("/history/:id", auth, async (req, res) => {
-	const history = await History.findById(req.params.id);
+	const history = await History.findById(req.params.id).populate({
+		path: "room"
+	});
 	console.log(history);
 	res.status(200).json(history);
 });
 //See all Histories in a given Room
-router.get("/histories/:id", auth, async (req, res) => {
+router.get("/histories/room/:id", auth, async (req, res) => {
 	try {
 		const room = await Room.findById(req.params.id);
 		await room.populate("histories").execPopulate();

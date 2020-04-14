@@ -20,6 +20,8 @@ export class PatientDetailComponent implements OnInit {
   edit: boolean = false;
   selectInfo: any[] = [];
   selectPatient: string;
+  patientId: string;
+  last_name;
   id: string;
 
   constructor(
@@ -30,11 +32,21 @@ export class PatientDetailComponent implements OnInit {
   ) {
     this.router.params.subscribe(params => {
       this.id = params["id"];
+
       this.getPatient(this.id);
     });
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.patientsService.currentPatientId.subscribe(patientId => {
+      this.patientId = patientId;
+      console.log(patientId);
+    });
+
+    this.patientsService
+      .getPatient(this.patientId)
+      .subscribe((patient: any) => (this.patient = patient));
+  }
 
   getPatient(id: string) {
     this.patientsService.getPatient(id).subscribe((data: Patient) => {

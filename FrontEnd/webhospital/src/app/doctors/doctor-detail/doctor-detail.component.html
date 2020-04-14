@@ -1,139 +1,153 @@
-<div class="row">
-  <div class="col-xs-12">
-    <h3>Vista Doctor</h3>
-    <div class="btn-group">
-      <button
-        type="button"
-        class="btn btn-primary dropdown-toggle"
-        style="position:relative;"
-        (click)="patchDoctor()"
-        *ngIf="!this.edit"
-      >
-        Manage
-      </button>
+<mat-card>
+  <div class="row">
+    <div class="col-xs-12">
+      <h3>Vista Doctor</h3>
+      <div class="btn-group">
+        <button
+          type="button"
+          class="btn btn-primary dropdown-toggle"
+          style="position:relative;"
+          (click)="patchDoctor()"
+          *ngIf="!this.edit"
+        >
+          Manage
+        </button>
+      </div>
     </div>
   </div>
-</div>
-<div class="card-body">
-  <form #postForm="ngForm" (submit)="onPatchDoctor(postForm)">
-    <fieldset [disabled]="!this.edit">
-      <label for="exampleFormControlInput1"
-        >Unique Medical Code: {{this.doctor._id}}</label
-      >
-      <div class="form-group">
-        <label for="exampleFormControlInput1">ID Card: </label>
-        <input
-          type="text"
-          class="form-control"
-          name="idCard"
-          placeholder=""
-          value="{{this.doctor.idCard}}"
-          ngModel
-          #idCard="ngModel"
-        />
-      </div>
-      <div class="form-group">
-        <label for="exampleFormControlInput1">Name:</label>
-        <input
-          type="text"
-          class="form-control"
-          id="exampleFormControlInput1"
-          placeholder=""
-          value="{{this.doctor.name}}"
-          ngModel
-          #name="ngModel"
-          name="name"
-        />
-      </div>
-      <div class="form-group">
-        <label for="exampleFormControlInput1">Last Name:</label>
-        <input
-          name="last_name"
-          type="email"
-          class="form-control"
-          value="{{this.doctor.last_name}}"
-          id="exampleFormControlInput1"
-          placeholder=""
-          ngModel
-          #last_name="ngModel"
-        />
-      </div>
-      <div class="form-group">
-        <label for="exampleFormControlInput1">Birth Date:</label>
-        <input
-          name="birthDate"
-          type="text"
-          class="form-control"
-          id="exampleFormControlInput1"
-          value="{{this.doctor.birthDate}}"
-          placeholder=""
-          ngModel
-          #birthDate="ngModel"
-          name="birthDate"
-        />
-      </div>
-      <div class="form-group">
-        <label for="exampleFormControlSelect1">Status:</label>
-        <select
-          name="isActive"
-          class="form-control"
-          id="exampleFormControlSelect1"
-          ngModel
-          #isActive="ngModel"
-          value="{{this.doctor.isActive}}"
+  <div class="card-body">
+    <form #postForm="ngForm" (submit)="onPatchDoctor(postForm)">
+      <fieldset [disabled]="!this.edit">
+        <label for="exampleFormControlInput1"
+          >Unique Medical Code: {{this.doctor._id}}</label
         >
-          <option value="true">Active</option>
-          <option value="false">Inactive</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label for="exampleFormControlSelect1">Gender:</label>
-        <select
-          name="gender"
-          class="form-control"
-          id="exampleFormControlSelect1"
-          ngModel
-          #gender="ngModel"
-          value="{{this.doctor.gender}}"
-        >
-          <option value="Male">Male</option>
-          <option value="Female">Female</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label for="exampleFormControlSelect1">Specialty:</label>
-        <input
-          id="exampleFormControlSelect1"
-          ngModel
-          #specialty="ngModel"
-          value="{{this.doctor.specialty}}"
-          class="form-control"
-          name="specialty"
-        />
-      </div>
-      <div class="form-group">
-        <label for="exampleFormControlSelect1">Email:</label>
-        <input
-          id="exampleFormControlSelect1"
-          ngModel
-          #email="ngModel"
-          value="{{this.doctor.email}}"
-          class="form-control"
-          name="email"
-        />
-      </div>
-      <div>
-        <button type="submit" class="btn  btn-success" [disabled]="!form.valid">
-          <i class="nav-icon fas fa-user-edit"></i>
-          Guardar Cambios
-        </button>
-        |
-        <button type="button" class="btn  btn-danger" (click)="patchDoctor()">
-          <i class="nav-icon fas fa-window-close"></i>
-          Cancelar
-        </button>
-      </div>
-    </fieldset>
-    <div class="btn__box" *ngIf="this.edit"></div>
-  </form>
-</div>
+        <div class="form-group">
+          <label for="exampleFormControlInput1">ID Card: </label>
+          <input
+            type="text"
+            class="form-control"
+            name="idCard"
+            placeholder=""
+            value="{{this.doctor.idCard}}"
+            ngModel
+            #idCard="ngModel"
+          />
+        </div>
+        <div class="form-group">
+          <label for="exampleFormControlInput1">Name:</label>
+          <input
+            type="text"
+            class="form-control"
+            id="exampleFormControlInput1"
+            placeholder=""
+            value="{{this.doctor.name}}"
+            ngModel
+            #name="ngModel"
+            name="name"
+          />
+        </div>
+        <div class="form-group">
+          <label for="exampleFormControlInput1">Last Name:</label>
+          <input
+            name="last_name"
+            type="email"
+            class="form-control"
+            value="{{this.doctor.last_name}}"
+            id="exampleFormControlInput1"
+            placeholder=""
+            ngModel
+            #last_name="ngModel"
+          />
+        </div>
+        <div class="form-group">
+          <label for="exampleFormControlSelect1">Status:</label>
+          <select
+            name="isActive"
+            class="form-control"
+            id="exampleFormControlSelect1"
+            ngModel
+            #isActive="ngModel"
+            value="{{this.doctor.isActive}}"
+          >
+            <option value="true">Active</option>
+            <option value="false">Inactive</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="exampleFormControlSelect1">Gender:</label>
+          <select
+            name="gender"
+            class="form-control"
+            id="exampleFormControlSelect1"
+            ngModel
+            #gender="ngModel"
+            value="{{this.doctor.gender}}"
+          >
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="exampleFormControlSelect1">Specialty:</label>
+          <input
+            id="exampleFormControlSelect1"
+            ngModel
+            #specialty="ngModel"
+            value="{{this.doctor.specialty}}"
+            class="form-control"
+            name="specialty"
+          />
+        </div>
+        <div class="form-group">
+          <label for="exampleFormControlSelect1">Email:</label>
+          <input
+            id="exampleFormControlSelect1"
+            ngModel
+            #email="ngModel"
+            value="{{this.doctor.email}}"
+            class="form-control"
+            name="email"
+          />
+        </div>
+        <div class="form-group">
+          <mat-form-field>
+            <label for="exampleFormControlInput1"
+              >Birth Date: {{this.doctor.birthDate}}</label
+            >
+
+            <input
+              matInput
+              [matDatepicker]="birthDate"
+              name="birthDate"
+              class="form-control"
+              required
+              ngModel
+              #birthDate="ngModel"
+            />
+            <mat-datepicker-toggle
+              matSuffix
+              [for]="birthDate"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #birthDate></mat-datepicker>
+          </mat-form-field>
+        </div>
+        <div>
+          <button
+            type="submit"
+            class="btn  btn-success"
+            [disabled]="!form.valid"
+          >
+            <i class="nav-icon fas fa-user-edit"></i>
+            Guardar Cambios
+          </button>
+          |
+          <button type="button" class="btn  btn-danger" (click)="patchDoctor()">
+            <i class="nav-icon fas fa-window-close"></i>
+            Cancelar
+          </button>
+        </div>
+      </fieldset>
+      <div class="btn__box" *ngIf="this.edit"></div>
+    </form>
+  </div>
+</mat-card>

@@ -27,7 +27,7 @@
                     mat-raised-button
                     color="accent"
                     type="button"
-                    class="btn  btn-success"
+                    class="btn btn-success"
                     [routerLink]="['/addPatient']"
                     *ngIf="userIsAuthenticated"
                   >
@@ -53,6 +53,7 @@
                 <tbody>
                   <tr
                     *ngFor="let patient of this.patients"
+                    (click)="setCurrentPatientId(patient._id)"
                     [routerLink]="['/patient', patient._id]"
                   >
                     <ng-container *ngIf="patient.isActive">
@@ -68,6 +69,8 @@
 
                       <td>
                         <button
+                          mat-raised-button
+                          color="primary"
                           type="button"
                           class="btn btn-primary dropdown-toggle"
                           (click)="setCurrentPatientId(patient._id)"
@@ -79,6 +82,8 @@
                       </td>
                       <td>
                         <button
+                          mat-raised-button
+                          color="primary"
                           type="button"
                           class="btn btn-primary dropdown-toggle"
                           (click)="setCurrentPatientId(patient._id)"

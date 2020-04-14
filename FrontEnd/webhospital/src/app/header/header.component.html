@@ -1,15 +1,19 @@
 <mat-toolbar color="primary">
-  <span>
-    <a routerLink="/">Home</a>
-  </span>
+  <ul>
+    <li>
+      <span class="spacer">
+        <h1>InstHealth</h1>
+      </span>
+    </li>
+    <span class="spacer"></span>
+  </ul>
   <span class="spacer"></span>
   <ul>
     <li *ngIf="userIsAuthenticated">
-      <a
-        mat-button
-        routerLink="/patients"
-        routerLinkActive="mat-accent"
-        routerLinkActive="mat-accent"
+      <a mat-button routerLink="/" routerLinkActive="mat-accent">Home</a>
+    </li>
+    <li *ngIf="userIsAuthenticated">
+      <a mat-button routerLink="/patients" routerLinkActive="mat-accent"
         >Patients</a
       >
     </li>

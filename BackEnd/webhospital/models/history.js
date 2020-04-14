@@ -6,7 +6,7 @@ const HistorySchema = new Schema({
 	dateIn: { type: Date, required: true, default: Date.now() },
 	dateOut: { type: Date },
 	bedId: { type: Number },
-	room: { type: mongoose.Schema.Types.ObjectId },
+	room: { type: mongoose.Schema.Types.ObjectId, ref: "Room" },
 	patient: { type: mongoose.Schema.Types.ObjectId, required: true }
 });
 //Export of the History Model

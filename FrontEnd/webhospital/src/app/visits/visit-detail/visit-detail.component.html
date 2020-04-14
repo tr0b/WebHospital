@@ -1,105 +1,129 @@
-<div class="row">
-  <div class="col-xs-12">
-    <h3>Vista Visit</h3>
-    <div>
-      <button
-        type="button"
-        class="btn btn-primary dropdown-toggle"
-        style="position:relative;"
-        (click)="patchVisit()"
-        *ngIf="!this.edit"
-      >
-        Manage
-      </button>
-      ||
-      <button
-        type="button"
-        class="btn btn-primary dropdown-toggle"
-        style="position:relative;"
-        (click)="generatePDF()"
-        *ngIf="!this.edit"
-      >
-        Print
-      </button>
+<mat-card>
+  <div class="row">
+    <div class="col-xs-12">
+      <h3>Vista Visit</h3>
+      <div>
+        <button
+          mat-raised-button
+          color="primary"
+          type="button"
+          class="btn btn-primary dropdown-toggle"
+          style="position:relative;"
+          (click)="patchVisit()"
+          *ngIf="!this.edit"
+        >
+          Manage
+        </button>
+        ||
+        <button
+          mat-raised-button
+          color="accent"
+          type="button"
+          class="btn btn-primary dropdown-toggle"
+          style="position:relative;"
+          (click)="generatePDF()"
+          *ngIf="!this.edit"
+        >
+          Print
+        </button>
+      </div>
     </div>
   </div>
-</div>
-<div class="card-body">
-  <form #postForm="ngForm" (submit)="onPatchVisit(postForm)">
-    <fieldset [disabled]="!this.edit">
-      <label for="exampleFormControlInput1"
-        >Visit Code: {{this.visit._id}}</label
-      >
-      <div class="form-group">
-        <label for="exampleFormControlInput1">Date: </label>
-        <input
-          type="text"
-          class="form-control"
-          name="date"
-          placeholder=""
-          value="{{this.visit.date}}"
-          ngModel
-          #date="ngModel"
-        />
-      </div>
-      <div class="form-group">
-        <label for="exampleFormControlInput1">Doctor:</label>
-        <input
-          type="text"
-          class="form-control"
-          id="exampleFormControlInput1"
-          placeholder=""
-          value="{{this.visit.doctor}}"
-          ngModel
-          #doctor="ngModel"
-          name="doctor"
-        />
-      </div>
-      <div class="form-group">
-        <label for="exampleFormControlInput1">Patient:</label>
-        <input
-          name="patient"
-          type="description"
-          class="form-control"
-          value="{{this.visit.patient}}"
-          id="exampleFormControlInput1"
-          placeholder=""
-          ngModel
-          #patient="ngModel"
-        />
-      </div>
-      <div class="form-group">
-        <label for="exampleFormControlSelect1">Plant:</label>
-        <input
-          id="exampleFormControlSelect1"
-          ngModel
-          #plant="ngModel"
-          value="{{this.visit.plant}}"
-          name="plant"
-        />
-      </div>
-      <div class="form-group">
-        <label for="exampleFormControlSelect1">Description:</label>
-        <input
-          id="exampleFormControlSelect1"
-          ngModel
-          #description="ngModel"
-          value="{{this.visit.description}}"
-          name="description"
-        />
-      </div>
-      <div>
-        <button type="submit" class="btn  btn-success" [disabled]="!form.valid">
-          <i class="nav-icon fas fa-user-edit"></i>
-          Guardar Cambios
-        </button>
-        |
-        <button type="button" class="btn  btn-danger" (click)="patchVisit()">
-          <i class="nav-icon fas fa-window-close"></i>
-          Cancelar
-        </button>
-      </div>
-    </fieldset>
-    <div class="btn__box" *ngIf="this.edit"></div>
-  </form>
-</div>
+  <div class="card-body">
+    <form #postForm="ngForm" (submit)="onPatchVisit(postForm)">
+      <fieldset [disabled]="!this.edit">
+        <label for="exampleFormControlInput1"
+          >Visit Code: {{this.visit._id}}</label
+        >
+        <div class="form-group">
+          <label for="exampleFormControlInput1"
+            >Date: {{this.visit.date}}
+          </label>
+          <input
+            type="text"
+            class="form-control"
+            name="date"
+            placeholder=""
+            value="{{this.visit.date}}"
+            ngModel
+            #date="ngModel"
+          />
+        </div>
+        <div class="form-group">
+          <label for="exampleFormControlInput1"
+            >Doctor: {{this.visit.doctor.name}} {{this.visit.doctor.last_name}}
+            || ID: {{this.visit.doctor._id}} || Specialty:
+            {{this.visit.doctor.specialty}}</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            id="exampleFormControlInput1"
+            placeholder=""
+            value="{{this.visit.doctor._id}}"
+            ngModel
+            #doctor="ngModel"
+            name="doctor"
+          />
+        </div>
+        <div class="form-group">
+          <label for="exampleFormControlInput1"
+            >Patient: {{this.visit.patient.name}}
+            {{this.visit.patient.last_name}} || Id Card:
+            {{this.visit.patient.idCard}}</label
+          >
+          <input
+            name="patient"
+            type="description"
+            class="form-control"
+            value="{{this.visit.patient._id}}"
+            id="exampleFormControlInput1"
+            placeholder=""
+            ngModel
+            #patient="ngModel"
+          />
+        </div>
+        <div class="form-group">
+          <label for="exampleFormControlSelect1"
+            >Plant: {{this.visit.plant.name}}</label
+          >
+          <input
+            id="exampleFormControlSelect1"
+            class="form-control"
+            ngModel
+            #plant="ngModel"
+            value="{{this.visit.plant._id}}"
+            name="plant"
+          />
+        </div>
+        <div class="form-group">
+          <label for="exampleFormControlSelect1">Description:</label>
+          <textarea
+            id="exampleFormControlSelect1"
+            class="form-control"
+            ngModel
+            #description="ngModel"
+            value="{{this.visit.description}}"
+            name="description"
+          ></textarea>
+        </div>
+        <div>
+          <button
+            type="submit"
+            class="btn  btn-success"
+            [disabled]="!form.valid"
+          >
+            <i class="nav-icon fas fa-user-edit"></i>
+            Guardar Cambios
+          </button>
+          |
+          <button type="button" class="btn  btn-danger" (click)="patchVisit()">
+            <i class="nav-icon fas fa-window-close"></i>
+            Cancelar
+          </button>
+        </div>
+      </fieldset>
+      <div class="btn__box" *ngIf="this.edit"></div>
+    </form>
+  </div>
+</mat-card>

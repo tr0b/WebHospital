@@ -1,9 +1,11 @@
 import { Injectable } from "@angular/core";
 import { Subject } from "rxjs";
 import { Visit } from "../models/visit.model";
+import { Doctor } from "../models/doctor.model";
 import { HttpClient } from "@angular/common/http";
 import { ToastrService } from "ngx-toastr";
 import { environment } from "src/environments/environment";
+import { Router } from "@angular/router";
 @Injectable({ providedIn: "root" })
 export class VisitsService {
   //Visit List
@@ -11,7 +13,11 @@ export class VisitsService {
   //Updated Visit List after POST
   private visitsUpdated = new Subject<Visit[]>();
   //Constructor with HttpClient
-  constructor(private httpClient: HttpClient, private toastr: ToastrService) {}
+  constructor(
+    private httpClient: HttpClient,
+    private toastr: ToastrService,
+    private router: Router
+  ) {}
   //URL string
 
   //Obtain all Visits
@@ -37,6 +43,8 @@ export class VisitsService {
         console.log(responseData);
         this.visitsUpdated.next([...this.visits]);
         this.toastr.success("¡Visita Actualizado Exitosamente!", "¡Exito!");
+
+        this.router.navigate(["/patients"]);
       });
   }
   getVisitUpdateListener() {

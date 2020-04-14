@@ -45,6 +45,7 @@ export class PatientsService {
         console.log(responseData);
         this.patientsUpdated.next([...this.patients]);
         this.toastr.success("¡Paciente Actualizado Exitosamente!", "¡Exito!");
+        this.router.navigate(["/patients"]);
       });
   }
   getPatientUpdateListener() {
